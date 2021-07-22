@@ -74,7 +74,7 @@ class MainActivity : AppCompatActivity() {
             }
             errorCallback = ErrorCallback {
                 runOnUiThread {
-                    Log.e("Main", "Problem scanning barcode: ${it.message}")
+                    Log.e("Main", "Problem scanning barcode:  ${it.message}")
                 }
             }
         }
