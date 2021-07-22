@@ -27,6 +27,12 @@ class AvoidListAdapter (
         holder.itemView.apply {
             var tvIngredient = findViewById<TextView>(R.id.tvIngredient)
             tvIngredient.text = curIngredient.name
+            var btnRemoveIngredient = findViewById<ImageButton>(R.id.btnRemoveIngredient)
+            btnRemoveIngredient.setOnClickListener {
+                curIngredient.delete = true
+                ingredients.removeAt(position)
+                notifyDataSetChanged()
+            }
         }
     }
 
@@ -37,13 +43,6 @@ class AvoidListAdapter (
     fun addIngredient(ingredient: Ingredient) {
         ingredients.add(ingredient)
         notifyItemInserted(ingredients.size-1)
-    }
-
-    fun deleteIngredient() {
-        ingredients.removeAll {
-            ingredient -> ingredient.delete
-        }
-        notifyDataSetChanged()
     }
 
 }
