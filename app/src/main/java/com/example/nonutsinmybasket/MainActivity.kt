@@ -6,6 +6,7 @@ import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Button
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
@@ -25,12 +26,27 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var avoidButton: Button
 
+    private lateinit var scanButton: Button
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         setupPermissions()
         codeScanner()
+
+        scanButton = findViewById(R.id.scanButton)
+        scanButton.setOnClickListener{
+            if (scanner_view.getVisibility() == View.INVISIBLE) {
+                scanner_view.visibility = View.VISIBLE
+                scanPrompt.visibility = View.VISIBLE
+            }else{
+                scanner_view.visibility = View.INVISIBLE
+                scanPrompt.visibility = View.INVISIBLE
+
+            }
+        }
+
 
         avoidButton = findViewById(R.id.avoidButton)
         avoidButton.setOnClickListener {
@@ -47,7 +63,7 @@ class MainActivity : AppCompatActivity() {
             formats = CodeScanner.ALL_FORMATS
 
             autoFocusMode = AutoFocusMode.SAFE
-            scanMode = ScanMode.CONTINUOUS
+            scanMode = ScanMode.SINGLE
             isAutoFocusEnabled = true
             isFlashEnabled = false
 
@@ -61,6 +77,9 @@ class MainActivity : AppCompatActivity() {
                     Log.e("Main", "Problem scanning barcode: ${it.message}")
                 }
             }
+        }
+        scanner_view.setOnClickListener{
+            codeScanner.startPreview()
         }
 
     }
