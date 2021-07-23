@@ -7,7 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 class AvoidListAdapter (
-    private val ingredients: MutableList<Ingredient>
+    private var ingredients: MutableList<Ingredient>
     ) : RecyclerView.Adapter<AvoidListAdapter.IngredientViewHolder>()
 {
     class IngredientViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
@@ -25,9 +25,9 @@ class AvoidListAdapter (
     override fun onBindViewHolder(holder: IngredientViewHolder, position: Int) {
         val curIngredient = ingredients[position]
         holder.itemView.apply {
-            var tvIngredient = findViewById<TextView>(R.id.tvIngredient)
+            val tvIngredient = findViewById<TextView>(R.id.tvIngredient)
             tvIngredient.text = curIngredient.name
-            var btnRemoveIngredient = findViewById<ImageButton>(R.id.btnRemoveIngredient)
+            val btnRemoveIngredient = findViewById<ImageButton>(R.id.btnRemoveIngredient)
             btnRemoveIngredient.setOnClickListener {
                 curIngredient.delete = true
                 ingredients.removeAt(position)
@@ -43,6 +43,20 @@ class AvoidListAdapter (
     fun addIngredient(ingredient: Ingredient) {
         ingredients.add(ingredient)
         notifyItemInserted(ingredients.size-1)
+    }
+
+    fun getIngredients(): MutableList<Ingredient> {
+        return ingredients
+    }
+
+    fun removeIngredients() {
+        ingredients.removeAll{ ingredient ->  ingredient.delete}
+        notifyDataSetChanged()
+    }
+
+    fun setIngredientsList(newIngredients: MutableList<Ingredient>) {
+        ingredients = newIngredients
+        notifyDataSetChanged()
     }
 
 }
