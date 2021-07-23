@@ -4,13 +4,13 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
-import android.widget.ImageButton
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 class AvoidList : AppCompatActivity() {
 
     private lateinit var avoidListAdapter: AvoidListAdapter
+    private lateinit var dietListAdapter: DietListAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,6 +20,7 @@ class AvoidList : AppCompatActivity() {
 
         actionBar!!.title = "Avoid List"
         actionBar.setDisplayHomeAsUpEnabled(true)
+
         avoidListAdapter = AvoidListAdapter(mutableListOf())
         var rvAvoidList = findViewById<RecyclerView>(R.id.rvAvoidList)
         rvAvoidList.adapter = avoidListAdapter
@@ -35,5 +36,15 @@ class AvoidList : AppCompatActivity() {
                 etEnterIngredient.text.clear()
             }
         }
+
+        dietListAdapter = DietListAdapter(mutableListOf(), this.avoidListAdapter)
+        var rvDietList = findViewById<RecyclerView>(R.id.rvDietsList)
+        rvDietList.adapter = dietListAdapter
+        rvDietList.layoutManager = LinearLayoutManager(this)
+
+        val veggieBanned = listOf<String>("Chicken", "Beef", "Pork", "Lamb", "Meat")
+        val name = "Vegetarian"
+        val veggieDiet = Diet(veggieBanned, name, false)
+        dietListAdapter.addDiet(veggieDiet)
     }
 }
