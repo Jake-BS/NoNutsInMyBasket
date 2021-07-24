@@ -71,14 +71,17 @@ class MainActivity : AppCompatActivity() {
                 runOnUiThread {
                     scanPrompt.text = it.text
                 }
+
             }
             errorCallback = ErrorCallback {
                 runOnUiThread {
-                    Log.e("Main", "Problem scanning barcode: ${it.message}")
+                    Log.e("Main", "Problem scanning barcode:  ${it.message}")
                 }
             }
         }
         scanner_view.setOnClickListener{
+            val intent = Intent(this, product_page::class.java)
+            startActivity(intent)
             codeScanner.startPreview()
         }
 
