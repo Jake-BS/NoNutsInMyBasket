@@ -41,8 +41,8 @@ class AvoidListAdapter (
     }
 
     fun addIngredient(ingredient: Ingredient) {
-        ingredients.add(ingredient)
-        notifyItemInserted(ingredients.size-1)
+        ingredients.add(0, ingredient)
+        notifyItemInserted(0)
     }
 
     fun getIngredients(): MutableList<Ingredient> {
