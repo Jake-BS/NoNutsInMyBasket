@@ -71,6 +71,7 @@ class MainActivity : AppCompatActivity() {
                 runOnUiThread {
                     scanPrompt.text = it.text
                 }
+
             }
             errorCallback = ErrorCallback {
                 runOnUiThread {
@@ -79,6 +80,8 @@ class MainActivity : AppCompatActivity() {
             }
         }
         scanner_view.setOnClickListener{
+            val intent = Intent(this, product_page::class.java)
+            startActivity(intent)
             codeScanner.startPreview()
         }
 
