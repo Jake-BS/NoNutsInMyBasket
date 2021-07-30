@@ -1,5 +1,6 @@
 package com.example.nonutsinmybasket
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.KeyEvent
@@ -13,10 +14,14 @@ class AvoidList : AppCompatActivity() {
 
     private lateinit var avoidListAdapter: AvoidListAdapter
     private lateinit var dietListAdapter: DietListAdapter
+    //private lateinit var sqliteHelper: SQLiteHelper
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_avoid_list)
+
+        //sqliteHelper = SQLiteHelper(this)
 
         val actionBar = supportActionBar
 
@@ -46,6 +51,8 @@ class AvoidList : AppCompatActivity() {
         btnAddIngredient.setOnClickListener {
             addToAvoidList(etEnterIngredient)
         }
+        //val savedIngredients = sqliteHelper.getAllIngredients()
+        //avoidListAdapter.setIngredientsList(savedIngredients)
     }
 
     fun settingUpDiets(){
@@ -54,6 +61,12 @@ class AvoidList : AppCompatActivity() {
         rvDietList.adapter = dietListAdapter
         rvDietList.layoutManager = LinearLayoutManager(this)
         val diets = getDiets()
+        //val selectedDiets = sqliteHelper.getAllDiets()
+        //for (diet in diets) {
+            //for (sDiet in selectedDiets) {
+                //if (diet.name == sDiet) diet.isChecked = true
+            //}
+        //}
         for(diet in diets) dietListAdapter.addDiet(diet)
     }
 

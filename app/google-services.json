@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1034193282904",
+    "project_id": "nonutsinmybasket",
+    "storage_bucket": "nonutsinmybasket.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1034193282904:android:0599a7bdb8a3b1b6f4e72d",
+        "android_client_info": {
+          "package_name": "com.example.nonutsinmybasket"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1034193282904-e97mk06cl4dvhqo7hbns6gq6599aqtp4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJ_clkT6sRAZNwzRPVY_D9PPWsdCxj2y0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1034193282904-e97mk06cl4dvhqo7hbns6gq6599aqtp4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
