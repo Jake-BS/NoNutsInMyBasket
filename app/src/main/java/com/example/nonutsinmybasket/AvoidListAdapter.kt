@@ -43,6 +43,7 @@ class AvoidListAdapter (
     fun addIngredient(ingredient: Ingredient) {
         ingredients.add(0, ingredient)
         notifyItemInserted(0)
+        //sqliteHelper.insertIngredient(ingredient)
     }
 
     fun getIngredients(): MutableList<Ingredient> {
@@ -51,6 +52,9 @@ class AvoidListAdapter (
 
     fun removeIngredients() {
         ingredients.removeAll{ ingredient ->  ingredient.delete}
+        //for (ingredient in ingredients) {
+        //    if (ingredient.delete) sqliteHelper.deleteIngredient(ingredient.name)
+        //}
         notifyDataSetChanged()
     }
 

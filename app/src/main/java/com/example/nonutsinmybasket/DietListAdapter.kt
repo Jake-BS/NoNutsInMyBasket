@@ -40,6 +40,7 @@ class DietListAdapter (
                     for (ingredient in curDiet.ingredientList) avoidListAdapter.addIngredient(
                         Ingredient(ingredient)
                     )
+                    //sqliteHelper.insertDiet(curDiet.name)
                 }
                 else {
                     //Removes diet items when unchecked
@@ -51,6 +52,7 @@ class DietListAdapter (
                     }
                     avoidListAdapter.setIngredientsList(curIngredientsList)
                     avoidListAdapter.removeIngredients()
+                    //sqliteHelper.deleteDiet(curDiet.name)
                 }
             }
         }
