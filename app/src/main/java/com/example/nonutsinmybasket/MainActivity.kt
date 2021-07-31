@@ -98,7 +98,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
         scanner_view.setOnClickListener{
-            val intent = Intent(this, product_page::class.java)
+            val intent = Intent(this, ProductPage::class.java)
             intent.putExtra("Barcode", scanPrompt.text.toString())
             startActivity(intent)
             codeScanner.startPreview()
