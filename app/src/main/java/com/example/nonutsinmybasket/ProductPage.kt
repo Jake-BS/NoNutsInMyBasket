@@ -3,6 +3,8 @@ package com.example.nonutsinmybasket
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ArrayAdapter
+import android.widget.Toast
+import com.example.nonutsinmybasket.apiclasses.ProductModel
 import kotlinx.android.synthetic.main.activity_product_page.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -11,7 +13,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.net.URL
 
-class product_page : AppCompatActivity() {
+class ProductPage : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,22 +26,27 @@ class product_page : AppCompatActivity() {
         var API = rf.create(Retrofitinterface::class.java)
         var call = API.posts
 
-        call?.enqueue(object:Callback<List<PostModel?>?>{
+        call?.enqueue(object:Callback<List<ProductModel?>?>{
             override fun onResponse(
-                call: Call<List<PostModel?>?>?,
-                response: Response<List<PostModel?>?>?,
+                call: Call<List<ProductModel?>?>?,
+                response: Response<List<ProductModel?>?>?,
             ) {
-                    var postlist : List<PostModel>? = response?.body() as List<PostModel>
+                    var postlist : List<ProductModel>? = response?.body() as List<ProductModel>
                     var post = arrayOfNulls<String>(postlist!!.size)
 
                     for (i in postlist!!.indices)
-                        post[i]=postlist!![i]!!.body
+                        post[i]=postlist!![i]!!.product.ingredients_text
 
                     var adapter = ArrayAdapter<String>(applicationContext,android.R.layout.simple_dropdown_item_1line,post)
                     productData.adapter = adapter
             }
 
-            override fun onFailure(call: Call<List<PostModel?>?>?, t: Throwable?) {
+            override fun onFailure(call: Call<List<ProductModel?>?>?, t: Throwable?) {
+                Toast.makeText(
+                    this@ProductPage,
+                    "AHHHHHHHHHHHHHHHHHHHHHH!",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
 
         })

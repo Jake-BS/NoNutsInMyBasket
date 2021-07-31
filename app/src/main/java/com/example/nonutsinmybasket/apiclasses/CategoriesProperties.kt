@@ -1,0 +1,3 @@
+package com.example.nonutsinmybasket.apiclasses
+
+class CategoriesProperties
