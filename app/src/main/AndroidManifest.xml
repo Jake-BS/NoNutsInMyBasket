@@ -19,10 +19,10 @@
 
         </activity>
         <activity
-            android:name=".ProductPage"
+            android:name=".productpage.ProductPage"
             android:parentActivityName=".MainActivity" />
         <activity
-            android:name=".AvoidList"
+            android:name=".avoidpage.AvoidList"
             android:parentActivityName=".MainActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>

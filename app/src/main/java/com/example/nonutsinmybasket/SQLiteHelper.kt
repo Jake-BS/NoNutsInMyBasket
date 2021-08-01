@@ -1,11 +1,11 @@
 package com.example.nonutsinmybasket
 
-import android.app.AlertDialog
 import android.content.ContentValues
 import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteOpenHelper
 import android.database.sqlite.SQLiteDatabase
+import com.example.nonutsinmybasket.models.Ingredient
 
 class SQLiteHelper(context: Context) : SQLiteOpenHelper(context, DATEBASE_NAME, null, DATABASE_VERSION) {
 
