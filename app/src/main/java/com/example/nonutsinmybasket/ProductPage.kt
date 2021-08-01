@@ -11,7 +11,6 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import java.net.URL
 
 class ProductPage : AppCompatActivity() {
 
@@ -20,31 +19,31 @@ class ProductPage : AppCompatActivity() {
         setContentView(R.layout.activity_product_page)
 
         var rf = Retrofit.Builder()
-            .baseUrl(Retrofitinterface.BASE_URL)
+            .baseUrl(RetrofitInterface.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create()).build()
 
-        var API = rf.create(Retrofitinterface::class.java)
+        var API = rf.create(RetrofitInterface::class.java)
         var call = API.posts
 
-        call?.enqueue(object:Callback<List<ProductModel?>?>{
+        call?.enqueue(object:Callback<ProductModel?>{
             override fun onResponse(
-                call: Call<List<ProductModel?>?>?,
-                response: Response<List<ProductModel?>?>?,
+                call: Call<ProductModel?>?,
+                response: Response<ProductModel?>?,
             ) {
-                    var postlist : List<ProductModel>? = response?.body() as List<ProductModel>
-                    var post = arrayOfNulls<String>(postlist!!.size)
+                    var postResponse : ProductModel = response?.body()!! as ProductModel
+                    var post = arrayOfNulls<String>(1)
 
-                    for (i in postlist!!.indices)
-                        post[i]=postlist!![i]!!.product.ingredients_text
+
+                    post[0]=postResponse.product.ingredients_text
 
                     var adapter = ArrayAdapter<String>(applicationContext,android.R.layout.simple_dropdown_item_1line,post)
                     productData.adapter = adapter
             }
 
-            override fun onFailure(call: Call<List<ProductModel?>?>?, t: Throwable?) {
+            override fun onFailure(call: Call<ProductModel?>?, t: Throwable?) {
                 Toast.makeText(
                     this@ProductPage,
-                    "AHHHHHHHHHHHHHHHHHHHHHH!",
+                    "${t.toString()}",
                     Toast.LENGTH_SHORT
                 ).show()
             }
