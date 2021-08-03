@@ -8,15 +8,29 @@ import android.widget.Toast
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.firestore.CollectionReference
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_register.*
 
 class Register : AppCompatActivity() {
+    private lateinit var auth: FirebaseAuth
+    private lateinit var db: FirebaseFirestore
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
+        registerButtonClickListener()
+
+        auth = FirebaseAuth.getInstance()
+        db = FirebaseFirestore.getInstance()
+    }
+
+    fun registerButtonClickListener() {
         btnRegister.setOnClickListener{
             when {
+                //Checks for empty fields
                 TextUtils.isEmpty(etRegisterEmail.text.toString().trim {it <= ' '}) -> {
                     Toast.makeText(
                         this@Register,
@@ -39,46 +53,74 @@ class Register : AppCompatActivity() {
                     ).show()
                 }
                 else -> {
-                    val email: String = etRegisterEmail.text.toString().trim {it <= ' '}
-                    val password: String = etRegisterPassword.text.toString().trim {it <= ' '}
-                    val confirmPassword: String = etConfirmPassword.text.toString().trim {it <= ' '}
-
-                    if(password == confirmPassword) {
-                        FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
-                            .addOnCompleteListener { task ->
-                                if (task.isSuccessful) {
-                                    val firebaseUser: FirebaseUser = task.result!!.user!!
-
-                                    Toast.makeText(
-                                        this@Register,
-                                        "You've successfully registered!",
-                                        Toast.LENGTH_SHORT
-                                    ).show()
-
-                                    val intent = Intent(this@Register, MainActivity::class.java)
-                                    intent.flags =
-                                        Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                                    intent.putExtra("user_id", firebaseUser.uid)
-                                    intent.putExtra("email_id", email)
-                                    startActivity(intent)
-                                    finish()
-                                } else {
-                                    Toast.makeText(
-                                        this@Register,
-                                        task.exception!!.message.toString(),
-                                        Toast.LENGTH_SHORT
-                                    ).show()
-                                }
-                            }
-                    } else {
-                        Toast.makeText(this@Register,
-                        "The two passwords entered are different",
-                        Toast.LENGTH_SHORT)
-                    }
+                    registerClicked()
                 }
 
 
             }
         }
+    }
+
+    private fun registerClicked() {
+        val email: String = etRegisterEmail.text.toString().trim {it <= ' '}
+        val password: String = etRegisterPassword.text.toString().trim {it <= ' '}
+        val confirmPassword: String = etConfirmPassword.text.toString().trim {it <= ' '}
+
+        if(password == confirmPassword) {
+
+
+            val users = db.collection("USERS")
+            val query = users.whereEqualTo("email", email).get()
+                .addOnSuccessListener {
+                    it ->
+                    if(it.isEmpty) {
+                        register(email, password, users)
+                    } else {
+                        Toast.makeText(this,
+                        "Email already registered, please try logging in",
+                        Toast.LENGTH_LONG).show()
+                    }
+                }
+
+
+        } else {
+            Toast.makeText(this@Register,
+                "The two passwords entered are different",
+                Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun register(email: String, password: String, users: CollectionReference) {
+        FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    val firebaseUser: FirebaseUser = task.result!!.user!!
+
+                    val user = hashMapOf(
+                        "email" to email
+                    )
+                    users.document(email).set(user)
+
+                    Toast.makeText(
+                        this@Register,
+                        "You've successfully registered!",
+                        Toast.LENGTH_SHORT
+                    ).show()
+
+                    val intent = Intent(this@Register, MainActivity::class.java)
+                    intent.flags =
+                        Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    intent.putExtra("user_id", firebaseUser.uid)
+                    intent.putExtra("email_id", email)
+                    startActivity(intent)
+                    finish()
+                } else {
+                    Toast.makeText(
+                        this@Register,
+                        task.exception!!.message.toString(),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
     }
 }

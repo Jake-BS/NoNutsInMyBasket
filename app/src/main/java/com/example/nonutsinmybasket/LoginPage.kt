@@ -42,39 +42,40 @@ class LoginPage : AppCompatActivity() {
                     ).show()
                 }
                 else -> {
-                    val email: String = etLoginEmail.text.toString().trim {it <= ' '}
-                    val password: String = etLoginPassword.text.toString().trim {it <= ' '}
-                    FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password)
-                        .addOnCompleteListener { task ->
-                            if (task.isSuccessful) {
-                                val firebaseUser: FirebaseUser = task.result!!.user!!
-
-                                Toast.makeText(
-                                    this@LoginPage,
-                                    "You've successfully registered!",
-                                    Toast.LENGTH_SHORT
-                                ).show()
-
-                                val intent = Intent(this@LoginPage, MainActivity::class.java)
-                                intent.flags =
-                                    Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                                intent.putExtra("user_id", FirebaseAuth.getInstance().currentUser!!.uid)
-                                intent.putExtra("email_id", email)
-                                startActivity(intent)
-                                finish()
-                            } else {
-                                Toast.makeText(
-                                    this@LoginPage,
-                                    task.exception!!.message.toString(),
-                                    Toast.LENGTH_SHORT
-                                ).show()
-                            }
-                        }
-
+                    login()
                 }
 
 
             }
         }
+    }
+    fun login() {
+        val email: String = etLoginEmail.text.toString().trim {it <= ' '}
+        val password: String = etLoginPassword.text.toString().trim {it <= ' '}
+        FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password)
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+
+                    Toast.makeText(
+                        this@LoginPage,
+                        "You've successfully logged in!",
+                        Toast.LENGTH_SHORT
+                    ).show()
+
+                    val intent = Intent(this@LoginPage, MainActivity::class.java)
+                    intent.flags =
+                        Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    intent.putExtra("user_id", FirebaseAuth.getInstance().currentUser!!.uid)
+                    intent.putExtra("email_id", email)
+                    startActivity(intent)
+                    finish()
+                } else {
+                    Toast.makeText(
+                        this@LoginPage,
+                        task.exception!!.message.toString(),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
     }
 }
