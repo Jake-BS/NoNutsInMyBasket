@@ -1,7 +1,9 @@
 package com.example.nonutsinmybasket
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -20,6 +22,7 @@ import com.budiyev.android.codescanner.ScanMode
 import com.example.nonutsinmybasket.avoidpage.AvoidList
 import com.example.nonutsinmybasket.productpage.ProductPage
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_main.*
 
 private const val CAMERA_REQUEST_CODE = 101
@@ -32,26 +35,68 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var scanButton: Button
 
+    private lateinit var  db: FirebaseFirestore
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val userId = intent.getStringExtra("user_id")
-        val emailId = intent.getStringExtra("email_id")
+        val sharedPrefs=this?.getPreferences(Context.MODE_PRIVATE)?:return
+        val isLogin=sharedPrefs.getString("Email", "1")
 
-        val tvGreeting = findViewById<TextView>(R.id.tvGreeting)
-        tvGreeting.text = "Welcome $userId, $emailId"
+        if (isLogin == "1") {
+            val emailId = intent.getStringExtra("email_id")
+            if (emailId != null) {
+                setText(emailId)
+                with(sharedPrefs.edit()) {
+                    putString("Email", emailId)
+                    apply()
+                }
+            } else {
+                var intent = Intent(this, LoginPage::class.java)
+                startActivity(intent)
+                finish()
+            }
+        }  else {
+            setText(isLogin)
+        }
 
+        setupLogoutButton(sharedPrefs)
+        setupPermissions()
+        codeScanner()
+        toggleScanButton()
+        setupAvoidButton()
+    }
+
+    private fun setText(email: String?) {
+        db = FirebaseFirestore.getInstance()
+        if (email != null) {
+            db.collection("USERS").document(email).get()
+                .addOnSuccessListener { tasks ->
+                    var emailForMessage = tasks.get("email").toString()
+                    tvGreeting.text = "Welcome $emailForMessage!"
+                }
+        }
+    }
+
+    private fun setupLogoutButton(sharedPrefs: SharedPreferences) {
         btnLogout.setOnClickListener{
+            sharedPrefs.edit().remove("Email").apply()
             FirebaseAuth.getInstance().signOut()
-
             startActivity(Intent(this@MainActivity, LoginPage::class.java))
             finish()
         }
+    }
 
-        setupPermissions()
-        codeScanner()
+    private fun setupAvoidButton() {
+        avoidButton = findViewById(R.id.avoidButton)
+        avoidButton.setOnClickListener {
+            val intent = Intent(this, AvoidList::class.java)
+            startActivity(intent)
+        }
+    }
 
+    private fun toggleScanButton() {
         scanButton = findViewById(R.id.scanButton)
         scanButton.setOnClickListener{
             if (scanner_view.getVisibility() == View.INVISIBLE) {
@@ -63,13 +108,6 @@ class MainActivity : AppCompatActivity() {
 
             }
         }
-
-
-        avoidButton = findViewById(R.id.avoidButton)
-        avoidButton.setOnClickListener {
-            val intent = Intent(this, AvoidList::class.java)
-            startActivity(intent)
-        }
     }
 
     private fun codeScanner() {
@@ -79,7 +117,7 @@ class MainActivity : AppCompatActivity() {
             camera = CodeScanner.CAMERA_BACK
             formats = CodeScanner.ALL_FORMATS
 
-            autoFocusMode = AutoFocusMode.SAFE
+            autoFocusMode = AutoFocusMode.CONTINUOUS
             scanMode = ScanMode.SINGLE
             isAutoFocusEnabled = true
             isFlashEnabled = false
