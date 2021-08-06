@@ -68,4 +68,8 @@ class DietListAdapter (
         diets.add(diet)
         notifyItemInserted(diets.size - 1)
     }
+
+    fun getDiets() : MutableList<Diet>{
+        return diets
+    }
 }
