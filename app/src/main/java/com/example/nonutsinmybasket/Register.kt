@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import android.widget.Toast
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.FirebaseAuth
@@ -70,7 +71,7 @@ class Register : AppCompatActivity() {
 
 
             val users = db.collection("USERS")
-            val query = users.whereEqualTo("email", email).get()
+            users.whereEqualTo("email", email).get()
                 .addOnSuccessListener {
                     it ->
                     if(it.isEmpty) {
@@ -95,17 +96,27 @@ class Register : AppCompatActivity() {
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     val firebaseUser: FirebaseUser = task.result!!.user!!
-
+                    val emptyDietArray = arrayListOf<String>()
+                    val customIngredients = arrayListOf<String>()
                     val user = hashMapOf(
-                        "email" to email
+                        "email" to email,
+                        "diets" to emptyDietArray,
+                        "custom_ingredients" to customIngredients
                     )
                     users.document(email).set(user)
-
-                    Toast.makeText(
-                        this@Register,
-                        "You've successfully registered!",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                        .addOnFailureListener { e ->
+                            Toast.makeText(
+                                this@Register,
+                                "Failure writing doucment, $e",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }.addOnSuccessListener {
+                            Toast.makeText(
+                                this@Register,
+                                "You've successfully registered!",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
 
                     val intent = Intent(this@Register, MainActivity::class.java)
                     intent.flags =
