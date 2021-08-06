@@ -31,7 +31,10 @@ class ProductPage : AppCompatActivity() {
                 if (response.isSuccessful) {
                     response.body()?.product?.let { Log.d("Response", it.ingredients_text) }
                     productIngredients.text = response.body()?.product?.ingredients_text
-                    response.body()?.product?.let { Log.d("Response", it.image_front_url) }
+                    response.body()?.product?.let { it.image_front_url?.let { it1 ->
+                        Log.d("Response",
+                            it1)
+                    } }
                     val imageURL = response.body()?.product?.image_front_url
                     val placeholderImage = "https://www.ecpgr.cgiar.org/fileadmin/templates/ecpgr.org/Assets/images/No_Image_Available.jpg"
                     if(imageURL==null)
