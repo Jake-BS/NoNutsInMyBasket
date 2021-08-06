@@ -6,6 +6,7 @@ import android.view.KeyEvent
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.nonutsinmybasket.*
@@ -18,58 +19,110 @@ class AvoidList : AppCompatActivity() {
     private lateinit var avoidListAdapter: AvoidListAdapter
     private lateinit var dietListAdapter: DietListAdapter
     private lateinit var db: FirebaseFirestore
+    private var isLogin: String? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_avoid_list)
 
+        isLogin = intent.getStringExtra("email_id")
         db = FirebaseFirestore.getInstance()
 
         val actionBar = supportActionBar
 
         actionBar!!.title = "Avoid List"
-        actionBar.setDisplayHomeAsUpEnabled(true)
+        //actionBar.setDisplayHomeAsUpEnabled(true)
 
         settingUpAvoidList()
 
-        settingUpDiets()
+
+    }
+
+    override fun onBackPressed() {
+        val isLogin = intent.getStringExtra("email_id")
+        val currentIngredients = ingredientToText(avoidListAdapter.getIngredients())
+        val currentDiets = dietToText(dietListAdapter.getDiets())
+        val updatedUserData = hashMapOf(
+            "custom_ingredients" to currentIngredients,
+            "diets" to currentDiets
+        )
+        if (isLogin != null) {
+            db.collection("USERS").document(isLogin).update(updatedUserData as Map<String, Any>)
+                .addOnSuccessListener { Toast.makeText(this,
+                    "Updated avoid list",
+                    Toast.LENGTH_LONG).show()}
+                .addOnFailureListener{ e->
+                    Toast.makeText(this,
+                        "Didn't update avoid list, $e",
+                        Toast.LENGTH_LONG).show()
+                }
+        }
+        super.onBackPressed()
+    }
+
+    fun ingredientToText(ingredientsList : MutableList<Ingredient>): ArrayList<String> {
+        val stringList = arrayListOf<String>()
+        for (ingredient in ingredientsList) stringList.add(ingredient.name)
+        return stringList
+    }
+
+    fun dietToText(dietsList: MutableList<Diet>) : ArrayList<String> {
+        val stringList = arrayListOf<String>()
+        for (diet in dietsList) {
+            if (diet.isChecked) stringList.add(diet.name)
+        }
+        return stringList
+    }
+
+    fun textToIngredient(textIngredients: ArrayList<String>) : MutableList<Ingredient> {
+        val ingredients = mutableListOf<Ingredient>()
+        for (textIngredient in textIngredients) ingredients.add(Ingredient(textIngredient))
+        return ingredients
     }
 
 
     fun settingUpAvoidList(){
         avoidListAdapter = AvoidListAdapter(mutableListOf())
-        var rvAvoidList = findViewById<RecyclerView>(R.id.rvAvoidList)
-        rvAvoidList.adapter = avoidListAdapter
-        rvAvoidList.layoutManager = LinearLayoutManager(this)
-        var btnAddIngredient = findViewById<Button>(R.id.btnAdd)
-        var etEnterIngredient = findViewById<EditText>(R.id.etEnterIngredient)
-        etEnterIngredient.setOnKeyListener(View.OnKeyListener {v, keyCode, event ->
-            if (keyCode == KeyEvent.KEYCODE_ENTER && event.action == KeyEvent.ACTION_UP) {
-                addToAvoidList(etEnterIngredient)
-                true
+        if (isLogin != null) {
+            val user = db.collection("USERS").document(isLogin!!)
+            user.get().addOnCompleteListener{task ->
+                if (task.isSuccessful) {
+                    val document = task.result
+                    val ingredientsText = document?.get("custom_ingredients")
+                    avoidListAdapter.setIngredientsList(textToIngredient(ingredientsText as ArrayList<String>))
+                    var rvAvoidList = findViewById<RecyclerView>(R.id.rvAvoidList)
+                    rvAvoidList.adapter = avoidListAdapter
+                    rvAvoidList.layoutManager = LinearLayoutManager(this)
+                    var btnAddIngredient = findViewById<Button>(R.id.btnAdd)
+                    var etEnterIngredient = findViewById<EditText>(R.id.etEnterIngredient)
+                    etEnterIngredient.setOnKeyListener(View.OnKeyListener {v, keyCode, event ->
+                        if (keyCode == KeyEvent.KEYCODE_ENTER && event.action == KeyEvent.ACTION_UP) {
+                            addToAvoidList(etEnterIngredient)
+                            true
+                        }
+                        false
+                    })
+                    btnAddIngredient.setOnClickListener {
+                        addToAvoidList(etEnterIngredient)
+                    }
+                    settingUpDiets(document.get("diets") as ArrayList<String>)
+                }
             }
-            false
-        })
-        btnAddIngredient.setOnClickListener {
-            addToAvoidList(etEnterIngredient)
         }
-        //val savedIngredients = sqliteHelper.getAllIngredients()
-        //avoidListAdapter.setIngredientsList(savedIngredients)
     }
 
-    fun settingUpDiets(){
+    fun settingUpDiets(selectedDiets: ArrayList<String>) {
         dietListAdapter = DietListAdapter(mutableListOf(), this.avoidListAdapter)
         var rvDietList = findViewById<RecyclerView>(R.id.rvDietsList)
         rvDietList.adapter = dietListAdapter
         rvDietList.layoutManager = LinearLayoutManager(this)
         val diets = getDiets()
-        //val selectedDiets = sqliteHelper.getAllDiets()
-        //for (diet in diets) {
-            //for (sDiet in selectedDiets) {
-                //if (diet.name == sDiet) diet.isChecked = true
-            //}
-        //}
+        for (diet in diets) {
+            for (sDiet in selectedDiets) {
+                if (diet.name == sDiet) diet.isChecked = true
+            }
+        }
         for(diet in diets) dietListAdapter.addDiet(diet)
     }
 
