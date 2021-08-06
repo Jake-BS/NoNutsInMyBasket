@@ -71,7 +71,7 @@ data class Product(
     val id: String,
     val image_front_small_url: String,
     val image_front_thumb_url: String,
-    val image_front_url: String,
+    val image_front_url: String?=null,
     val image_ingredients_small_url: String,
     val image_ingredients_thumb_url: String,
     val image_ingredients_url: String,
