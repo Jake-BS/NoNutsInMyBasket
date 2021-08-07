@@ -37,14 +37,14 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var  db: FirebaseFirestore
 
-    private var isLogin: String? = null
+    private lateinit var currentEmail: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         val sharedPrefs=this?.getPreferences(Context.MODE_PRIVATE)?:return
-        isLogin=sharedPrefs.getString("Email", "1")
+        val isLogin=sharedPrefs.getString("Email", "1")
 
         if (isLogin == "1") {
             val emailId = intent.getStringExtra("email_id")
@@ -73,6 +73,7 @@ class MainActivity : AppCompatActivity() {
     private fun setText(email: String?) {
         db = FirebaseFirestore.getInstance()
         if (email != null) {
+            currentEmail = email
             db.collection("USERS").document(email).get()
                 .addOnSuccessListener { tasks ->
                     var emailForMessage = tasks.get("email").toString()
@@ -94,7 +95,7 @@ class MainActivity : AppCompatActivity() {
         avoidButton = findViewById(R.id.avoidButton)
         avoidButton.setOnClickListener {
             val intent = Intent(this, AvoidList::class.java)
-            intent.putExtra("email_id", isLogin)
+            intent.putExtra("email_id", currentEmail)
             startActivity(intent)
         }
     }
@@ -143,6 +144,7 @@ class MainActivity : AppCompatActivity() {
         scanner_view.setOnClickListener{
             val intent = Intent(this, ProductPage::class.java)
             intent.putExtra("Barcode", scanPrompt.text.toString())
+            intent.putExtra("email_id", currentEmail)
             startActivity(intent)
             codeScanner.startPreview()
         }
