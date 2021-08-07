@@ -126,12 +126,14 @@ class ProductPage : AppCompatActivity() {
                     } else {
                         val previouslyDetected = displayString.substring(7)
                         displayString = "A$previouslyDetected"
+                        foundSomethingSwitch = true
                     }
                 } else if (productIngredients.contains(ingredient.lowercase())) {
                     if(foundSomethingSwitch || maybeFoundSomethingSwitch) {
                         displayString = "$displayString, very small chance of $ingredient (may be part of another word)"
-                    } else if (maybeFoundSomethingSwitch) {
-                        displayString = "Maybe avoid buying - small chance of $ingredient (may be part of another word)"
+                    } else{
+                        displayString = "Maybe avoid buying - very small chance of $ingredient (may be part of another word)"
+                        maybeFoundSomethingSwitch = true
                     }
                 }
             }
