@@ -136,7 +136,7 @@ class ProductPage : AppCompatActivity() {
                 }
             }
         }
-        if (foundSomethingSwitch) output.text = displayString + "."
+        if (foundSomethingSwitch || maybeFoundSomethingSwitch) output.text = displayString + "."
         else output.text = "This product fits your dietry requirements, enjoy!"
     }
 
