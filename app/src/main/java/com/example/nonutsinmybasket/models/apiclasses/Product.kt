@@ -172,7 +172,7 @@ data class Product(
     val pnns_groups_2_tags: List<String>,
     val popularity_key: Float,
     val popularity_tags: List<String>,
-    val product_name: String,
+    val product_name: String? = null,
     val product_name_en: String,
     val product_name_en_debug_tags: List<Any>,
     val product_name_fr: String,
