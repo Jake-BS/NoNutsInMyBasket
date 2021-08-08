@@ -12,6 +12,7 @@ import com.example.nonutsinmybasket.productpage.api.Repository
 import com.google.firebase.firestore.FirebaseFirestore
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_product_page.*
+import kotlinx.android.synthetic.main.toolbar.*
 
 class ProductPage : AppCompatActivity() {
 
@@ -26,6 +27,8 @@ class ProductPage : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_product_page)
+
+        backButton.setOnClickListener { super.onBackPressed() }
 
         db = FirebaseFirestore.getInstance()
 
@@ -51,9 +54,7 @@ class ProductPage : AppCompatActivity() {
                     if (barcodeData != null) {
                         getProductData(barcodeData, ingredientsText)
                     }
-                    val actionBar = supportActionBar
-                    actionBar!!.title = "Ingredient Data"
-                    actionBar.setDisplayHomeAsUpEnabled(true)
+                    //Action bar stuff was here
                 }
             }
         }
@@ -68,7 +69,7 @@ class ProductPage : AppCompatActivity() {
                 val productIngredients = response.body()?.product?.ingredients_text?.lowercase()
                 if (productIngredients != null) {
                     detectAndDisplayBannedIngredients(productIngredients, ingredientsText)
-                }
+                } else output.text = "Nothing to display"
 
                 val imageURL = response.body()?.product?.image_front_url
                 if(imageURL==null)
@@ -127,12 +128,13 @@ class ProductPage : AppCompatActivity() {
                         val previouslyDetected = displayString.substring(7)
                         displayString = "A$previouslyDetected"
                         foundSomethingSwitch = true
+                        maybeFoundSomethingSwitch = false
                     }
                 } else if (productIngredients.contains(ingredient.lowercase())) {
                     if(foundSomethingSwitch || maybeFoundSomethingSwitch) {
-                        displayString = "$displayString, very small chance of $ingredient (may be part of another word)"
+                        displayString = "$displayString, $ingredient is a sub-word of an ingredient"
                     } else{
-                        displayString = "Maybe avoid buying - very small chance of $ingredient (may be part of another word)"
+                        displayString = "Maybe avoid buying - $ingredient is a sub-word of an ingredient"
                         maybeFoundSomethingSwitch = true
                     }
                 }
