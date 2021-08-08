@@ -39,6 +39,9 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var currentEmail: String
 
+    var scanComplete = false
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -115,6 +118,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun codeScanner() {
+
         codeScanner = CodeScanner(this, scanner_view)
 
         codeScanner.apply {
@@ -126,14 +130,20 @@ class MainActivity : AppCompatActivity() {
             isAutoFocusEnabled = true
             isFlashEnabled = false
 
+
+
+
             decodeCallback = DecodeCallback {
                 runOnUiThread {
                     scanPrompt.text = it.text
+                    scanPrompt.visibility = View.INVISIBLE
+
+                    scanComplete = true
+
 
                 }
-
-
             }
+
 
             errorCallback = ErrorCallback {
                 runOnUiThread {
@@ -141,15 +151,21 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+
+
         scanner_view.setOnClickListener{
             val intent = Intent(this, ProductPage::class.java)
             intent.putExtra("Barcode", scanPrompt.text.toString())
             intent.putExtra("email_id", currentEmail)
             startActivity(intent)
+            scanPrompt.visibility = View.INVISIBLE
             codeScanner.startPreview()
         }
 
+
     }
+
+
 
     override fun onResume() {
         super.onResume()
@@ -157,6 +173,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onPause() {
+
         codeScanner.releaseResources()
         super.onPause()
     }

@@ -3,14 +3,18 @@ package com.example.nonutsinmybasket.productpage
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.bumptech.glide.Glide
 import com.example.nonutsinmybasket.R
 import com.example.nonutsinmybasket.productpage.api.MainViewModel
 import com.example.nonutsinmybasket.productpage.api.MainViewModelFactory
 import com.example.nonutsinmybasket.productpage.api.Repository
 import com.google.firebase.firestore.FirebaseFirestore
 import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_product_page.*
 import kotlinx.android.synthetic.main.toolbar.*
 
@@ -73,9 +77,10 @@ class ProductPage : AppCompatActivity() {
 
                 val imageURL = response.body()?.product?.image_front_url
                 if(imageURL==null)
-                    Picasso.get().load(placeholderImage).into(imageView)
+                    Glide.with(this).load(R.drawable.jake).into(imageView)
                 else {
                     val into = Picasso.get().load(imageURL).into(imageView)
+                    noImagePrompt.visibility=View.INVISIBLE
                 }
             } else {
                 response.errorBody()?.let { Log.d("Response", it.string()) }
