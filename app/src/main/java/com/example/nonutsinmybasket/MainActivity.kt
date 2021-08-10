@@ -41,20 +41,23 @@ class MainActivity : AppCompatActivity() {
 
     var scanComplete = false
 
+    lateinit var sharedPrefs: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val sharedPrefs=this?.getPreferences(Context.MODE_PRIVATE)?:return
+        sharedPrefs=this?.getPreferences(Context.MODE_PRIVATE)?:return
         val isLogin=sharedPrefs.getString("Email", "1")
 
         if (isLogin == "1") {
             val emailId = intent.getStringExtra("email_id")
+            val userId = intent.getStringExtra("user_id")
             if (emailId != null) {
                 setText(emailId)
                 with(sharedPrefs.edit()) {
                     putString("Email", emailId)
+                    putString("UserId", userId)
                     apply()
                 }
             } else {
@@ -74,14 +77,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setText(email: String?) {
-        db = FirebaseFirestore.getInstance()
+        //db = FirebaseFirestore.getInstance()
         if (email != null) {
             currentEmail = email
-            db.collection("USERS").document(email).get()
-                .addOnSuccessListener { tasks ->
-                    var emailForMessage = tasks.get("email").toString()
-                    tvGreeting.text = "Welcome $emailForMessage!"
-                }
+            tvGreeting.text = "Welcome $currentEmail!"
         }
     }
 
@@ -98,7 +97,8 @@ class MainActivity : AppCompatActivity() {
         avoidButton = findViewById(R.id.avoidButton)
         avoidButton.setOnClickListener {
             val intent = Intent(this, AvoidList::class.java)
-            intent.putExtra("email_id", currentEmail)
+            val userId = sharedPrefs.getString("UserId", "1")
+            if (userId != null) intent.putExtra("user_id", userId)
             startActivity(intent)
         }
     }
@@ -135,6 +135,7 @@ class MainActivity : AppCompatActivity() {
 
             decodeCallback = DecodeCallback {
                 runOnUiThread {
+
                     scanPrompt.text = it.text
                     scanPrompt.visibility = View.INVISIBLE
 
@@ -156,10 +157,9 @@ class MainActivity : AppCompatActivity() {
         scanner_view.setOnClickListener{
             val intent = Intent(this, ProductPage::class.java)
             intent.putExtra("Barcode", scanPrompt.text.toString())
-            intent.putExtra("email_id", currentEmail)
+            val userId = sharedPrefs.getString("UserId", "1")
+            if (userId != null) intent.putExtra("user_id", userId)
             startActivity(intent)
-            scanPrompt.visibility = View.INVISIBLE
-            codeScanner.startPreview()
         }
 
 

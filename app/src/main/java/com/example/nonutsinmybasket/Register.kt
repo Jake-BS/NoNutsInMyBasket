@@ -68,22 +68,8 @@ class Register : AppCompatActivity() {
         val confirmPassword: String = etConfirmPassword.text.toString().trim {it <= ' '}
 
         if(password == confirmPassword) {
-
-
             val users = db.collection("USERS")
-            users.whereEqualTo("email", email).get()
-                .addOnSuccessListener {
-                    it ->
-                    if(it.isEmpty) {
-                        register(email, password, users)
-                    } else {
-                        Toast.makeText(this,
-                        "Email already registered, please try logging in",
-                        Toast.LENGTH_LONG).show()
-                    }
-                }
-
-
+            register(email, password, users)
         } else {
             Toast.makeText(this@Register,
                 "The two passwords entered are different",
@@ -103,7 +89,8 @@ class Register : AppCompatActivity() {
                         "diets" to emptyDietArray,
                         "custom_ingredients" to customIngredients
                     )
-                    users.document(email).set(user)
+                    val userId = firebaseUser.uid
+                    users.document(userId).set(user)
                         .addOnFailureListener { e ->
                             Toast.makeText(
                                 this@Register,
@@ -121,7 +108,7 @@ class Register : AppCompatActivity() {
                     val intent = Intent(this@Register, MainActivity::class.java)
                     intent.flags =
                         Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                    intent.putExtra("user_id", firebaseUser.uid)
+                    intent.putExtra("user_id", userId)
                     intent.putExtra("email_id", email)
                     startActivity(intent)
                     finish()

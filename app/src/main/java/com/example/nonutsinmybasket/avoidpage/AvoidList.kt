@@ -20,7 +20,7 @@ class AvoidList : AppCompatActivity() {
     private lateinit var avoidListAdapter: AvoidListAdapter
     private lateinit var dietListAdapter: DietListAdapter
     private lateinit var db: FirebaseFirestore
-    private var isLogin: String? = null
+    private var userId: String? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,7 +29,7 @@ class AvoidList : AppCompatActivity() {
 
         backButton.setOnClickListener { onBackPressed() }
         titleToolbar.text = "Your Avoid List"
-        isLogin = intent.getStringExtra("email_id")
+        userId = intent.getStringExtra("user_id")
         db = FirebaseFirestore.getInstance()
 
         settingUpAvoidList()
@@ -38,15 +38,14 @@ class AvoidList : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        val isLogin = intent.getStringExtra("email_id")
         val currentIngredients = ingredientToText(avoidListAdapter.getIngredients())
         val currentDiets = dietToText(dietListAdapter.getDiets())
         val updatedUserData = hashMapOf(
             "custom_ingredients" to currentIngredients,
             "diets" to currentDiets
         )
-        if (isLogin != null) {
-            db.collection("USERS").document(isLogin).update(updatedUserData as Map<String, Any>)
+        if (userId != null) {
+            db.collection("USERS").document(userId!!).update(updatedUserData as Map<String, Any>)
                 .addOnSuccessListener { Toast.makeText(this,
                     "Updated avoid list",
                     Toast.LENGTH_LONG).show()}
@@ -82,8 +81,8 @@ class AvoidList : AppCompatActivity() {
 
     fun settingUpAvoidList(){
         avoidListAdapter = AvoidListAdapter(mutableListOf())
-        if (isLogin != null) {
-            val user = db.collection("USERS").document(isLogin!!)
+        if (userId != null) {
+            val user = db.collection("USERS").document(userId!!)
             user.get().addOnCompleteListener{task ->
                 if (task.isSuccessful) {
                     val document = task.result

@@ -39,15 +39,15 @@ class ProductPage : AppCompatActivity() {
         val intent = getIntent()
 
         val barcodeData = intent.getStringExtra("Barcode")
-        val email = intent.getStringExtra("email_id")
-        getUserData(email, barcodeData)
+        val userId = intent.getStringExtra("user_id")
+        getUserData(userId, barcodeData)
 
 
     }
 
-    private fun getUserData(email: String?, barcodeData: String?) {
-        if (email != null) {
-            val user = db.collection("USERS").document(email)
+    private fun getUserData(userId: String?, barcodeData: String?) {
+        if (userId != null) {
+            val user = db.collection("USERS").document(userId)
             user.get().addOnCompleteListener{task ->
                 if (task.isSuccessful) {
                     val document = task.result
