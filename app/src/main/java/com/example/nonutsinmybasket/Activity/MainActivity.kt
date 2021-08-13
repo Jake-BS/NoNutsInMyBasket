@@ -1,59 +1,87 @@
-package com.example.nonutsinmybasket.avoidpage
+package com.example.nonutsinmybasket.Activity
 
+import android.content.Context
+import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.KeyEvent
+import androidx.viewpager.widget.ViewPager.OnPageChangeListener
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.nonutsinmybasket.*
+import com.budiyev.android.codescanner.CodeScanner
+import com.example.nonutsinmybasket.Adapter.BottomNavViewPagerAdapter
+import com.example.nonutsinmybasket.Fragments.About
+import com.example.nonutsinmybasket.Fragments.Avoid
+import com.example.nonutsinmybasket.Fragments.Profile
+import com.example.nonutsinmybasket.Fragments.Scan
+import com.example.nonutsinmybasket.R
+import com.example.nonutsinmybasket.avoidpage.AvoidListAdapter
+import com.example.nonutsinmybasket.avoidpage.DietListAdapter
+import com.example.nonutsinmybasket.databinding.ActivityMainBinding
 import com.example.nonutsinmybasket.models.Diet
 import com.example.nonutsinmybasket.models.Ingredient
+import com.google.android.material.textview.MaterialTextView
 import com.google.firebase.firestore.FirebaseFirestore
-import kotlinx.android.synthetic.main.toolbar.*
 
-class  AvoidList : AppCompatActivity() {
+class MainActivity : AppCompatActivity() {
+    private var binding: ActivityMainBinding? = null
+
+    private lateinit var codeScanner: CodeScanner
+
+    private lateinit var avoidButton: Button
+
+    private lateinit var scanButton: Button
+
+    private lateinit var  db: FirebaseFirestore
+
+    private lateinit var currentEmail: String
+
+    var scanComplete = false
+
+    lateinit var sharedPrefs: SharedPreferences
+
+    var userId: String? = null
 
     private lateinit var avoidListAdapter: AvoidListAdapter
     private lateinit var dietListAdapter: DietListAdapter
-    private lateinit var db: FirebaseFirestore
-    private var userId: String? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_avoid_list)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        val view: View = binding!!.getRoot()
+        setContentView(view)
+        setFragmentsToViewPager()
+        sharedPrefs=this?.getPreferences(Context.MODE_PRIVATE)?:return
+        val isLogin=sharedPrefs.getString("Email", "1")
+        userId = sharedPrefs.getString("UserId", "1")
 
-        backButton.setOnClickListener { onBackPressed() }
-        titleToolbar.text = "Your Avoid List"
-        userId = intent.getStringExtra("user_id")
-        db = FirebaseFirestore.getInstance()
-
-        settingUpAvoidList()
-    }
-
-    override fun onBackPressed() {
-        val currentIngredients = ingredientToText(avoidListAdapter.getIngredients())
-        val currentDiets = dietToText(dietListAdapter.getDiets())
-        val updatedUserData = hashMapOf(
-            "custom_ingredients" to currentIngredients,
-            "diets" to currentDiets
-        )
-        if (userId != null) {
-            db.collection("USERS").document(userId!!).update(updatedUserData as Map<String, Any>)
-                .addOnSuccessListener { Toast.makeText(this,
-                    "Updated avoid list",
-                    Toast.LENGTH_LONG).show()}
-                .addOnFailureListener{ e->
-                    Toast.makeText(this,
-                        "Didn't update avoid list, $e",
-                        Toast.LENGTH_LONG).show()
+        if (isLogin == "1") {
+            val emailId = intent.getStringExtra("email_id")
+            userId = intent.getStringExtra("user_id")
+            if (emailId != null) {
+                setText(emailId)
+                with(sharedPrefs.edit()) {
+                    putString("Email", emailId)
+                    putString("UserId", userId)
+                    apply()
                 }
+            } else {
+                var intent = Intent(this, Login::class.java)
+                startActivity(intent)
+                finish()
+            }
+        }  else {
+            setText(isLogin)
         }
-        super.onBackPressed()
+        db = FirebaseFirestore.getInstance()
+        settingUpAvoidList()
+
     }
 
     fun ingredientToText(ingredientsList : MutableList<Ingredient>): ArrayList<String> {
@@ -89,7 +117,7 @@ class  AvoidList : AppCompatActivity() {
                     var rvAvoidList = findViewById<RecyclerView>(R.id.rvAvoidList)
                     rvAvoidList.adapter = avoidListAdapter
                     rvAvoidList.layoutManager = LinearLayoutManager(this)
-                    var btnAddIngredient = findViewById<Button>(R.id.btnAdd)
+                    var btnAddIngredient = findViewById<MaterialTextView>(R.id.btnAdd)
                     var etEnterIngredient = findViewById<EditText>(R.id.etEnterIngredient)
                     etEnterIngredient.setOnKeyListener(View.OnKeyListener {v, keyCode, event ->
                         if (keyCode == KeyEvent.KEYCODE_ENTER && event.action == KeyEvent.ACTION_UP) {
@@ -139,6 +167,62 @@ class  AvoidList : AppCompatActivity() {
             val ingredient = Ingredient(ingredientName)
             avoidListAdapter.addIngredient(ingredient)
             etEnterIngredient.text.clear()
+        }
+    }
+
+    private fun setText(email: String?) {
+        if (email != null) {
+            currentEmail = email
+            //tvGreeting.text = "Welcome $currentEmail!"
+        }
+    }
+
+    private fun setFragmentsToViewPager() {
+        // set fragments to view pager
+        val adapter = BottomNavViewPagerAdapter(supportFragmentManager)
+        //adapter.addFrag(new Home(), "");
+        adapter.addFrag(Avoid(), "")
+        adapter.addFrag(Scan(), "")
+        adapter.addFrag(Profile(), "")
+        adapter.addFrag(About(), "")
+        binding?.viewPager?.adapter = adapter
+
+        //page swipe and click handling
+        binding?.viewPager?.addOnPageChangeListener(object : OnPageChangeListener {
+            override fun onPageScrolled(i: Int, v: Float, i1: Int) {}
+            override fun onPageSelected(i: Int) {
+                binding!!.bubbleNavigationLinearView.setCurrentActiveItem(i)
+            }
+
+            override fun onPageScrollStateChanged(i: Int) {}
+        })
+
+        //page swipe and click handling
+        binding?.bubbleNavigationLinearView?.setNavigationChangeListener { view, position ->
+            binding?.viewPager?.setCurrentItem(
+                position,
+                true
+            )
+        }
+    }
+
+    fun savePreferences() {
+        val currentIngredients = ingredientToText(avoidListAdapter.getIngredients())
+        val currentDiets = dietToText(dietListAdapter.getDiets())
+        val updatedUserData = hashMapOf(
+            "custom_ingredients" to currentIngredients,
+            "diets" to currentDiets
+        )
+        if (userId != null) {
+            db.collection("USERS").document(userId!!).update(updatedUserData as Map<String, Any>)
+                .addOnSuccessListener { Toast.makeText(this,
+                    "Updated avoid list",
+                    Toast.LENGTH_LONG).show()}
+                .addOnFailureListener{ e->
+                    Toast.makeText(this,
+                        "Didn't update avoid list, $e",
+                        Toast.LENGTH_LONG).show()
+                }
         }
     }
 }
