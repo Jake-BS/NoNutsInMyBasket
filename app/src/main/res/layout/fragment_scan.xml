@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg"
-    tools:context=".Fragments.About">
+    tools:context=".Fragments.Scan">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -39,7 +39,7 @@
                 android:visibility="visible" />
 
             <TextView
-                android:id="@+id/scannedresult"
+                android:id="@+id/scanPrompt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -48,7 +48,7 @@
                 android:fontFamily="@font/p_medium"
                 android:gravity="center"
                 android:maxLines="1"
-                android:text="Click here to view how the scanned result looks"
+                android:text="Tap the barcode once it has been detected"
                 android:textColor="@color/text4"
                 android:textSize="@dimen/_10sdp" />
 

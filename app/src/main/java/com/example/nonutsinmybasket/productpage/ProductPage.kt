@@ -15,7 +15,7 @@ import com.example.nonutsinmybasket.productpage.api.Repository
 import com.google.firebase.firestore.FirebaseFirestore
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_product_page.*
+import kotlinx.android.synthetic.main.activity_scanned_result.*
 import kotlinx.android.synthetic.main.toolbar.*
 
 class ProductPage : AppCompatActivity() {
@@ -30,9 +30,7 @@ class ProductPage : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_product_page)
-
-        backButton.setOnClickListener { super.onBackPressed() }
+        setContentView(R.layout.activity_scanned_result)
 
         db = FirebaseFirestore.getInstance()
 
@@ -80,7 +78,7 @@ class ProductPage : AppCompatActivity() {
                     Glide.with(this).load(R.drawable.jake).into(imageView)
                 else {
                     val into = Picasso.get().load(imageURL).into(imageView)
-                    noImagePrompt.visibility=View.INVISIBLE
+                    //noImagePrompt.visibility=View.INVISIBLE
                 }
             } else {
                 response.errorBody()?.let { Log.d("Response", it.string()) }

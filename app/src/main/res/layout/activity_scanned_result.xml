@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/bg"
     android:focusableInTouchMode="true"
-    tools:context=".Activity.ScanedResult">
+    tools:context=".productpage.ProductPage">
 
     <LinearLayout
         android:id="@+id/toolbar"
@@ -39,7 +39,7 @@
                 android:layout_marginLeft="@dimen/_5sdp"
                 android:layout_weight="1"
                 android:fontFamily="@font/p_semibold"
-                android:text="Details"
+                android:text="Results"
                 android:textColor="@color/text1"
                 android:textSize="@dimen/_12sdp" />
 
