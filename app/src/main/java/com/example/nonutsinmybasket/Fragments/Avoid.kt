@@ -156,4 +156,9 @@ class Avoid(var userId: String?) : Fragment() {
                 }
         }
     }
+
+    override fun onPause() {
+        savePreferences()
+        super.onPause()
+    }
 }

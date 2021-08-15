@@ -4,68 +4,42 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="44dp"
-    android:paddingStart="8dp">
+    android:paddingStart="8dp"
+    android:background="@drawable/bg_bottombar_content_15"
+    android:backgroundTint="@color/bg">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="@dimen/_5sdp"
-        android:background="@drawable/bg_bottombar_content_15"
-        android:backgroundTint="@color/bg"
-        android:orientation="horizontal"
-        android:padding="@dimen/_5sdp">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginLeft="@dimen/_5sdp"
-            android:layout_weight="0.1"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:fontFamily="@font/p_reguler"
-                android:text="Heading 2"
-                android:textColor="@color/text4"
-                android:textSize="@dimen/_7sdp" />
-
-            <TextView
-                android:id="@+id/tvIngredient"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ellipsize="end"
-                android:fontFamily="@font/p_medium"
-                android:maxLines="1"
-                android:text="Lorem Ipsum"
-                android:textColor="@color/text4"
-                android:textSize="@dimen/_10sdp" />
-
-        </LinearLayout>
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="0.1"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:layout_width="219dp"
+            android:id="@+id/tvIngredient"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginRight="@dimen/_10sdp"
-            android:layout_weight="0.7"
+            android:layout_weight="1"
             android:ellipsize="end"
             android:fontFamily="@font/p_medium"
-            android:gravity="end"
             android:maxLines="1"
-            android:text=""
+            android:text="Lorem Ipsum"
             android:textColor="@color/text4"
             android:textSize="@dimen/_10sdp" />
 
-        <ImageButton
-            android:id="@+id/btnRemoveIngredient"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.1"
-            app:srcCompat="@drawable/ic_remove_button" />
     </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/btnRemoveIngredient"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_remove_button" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

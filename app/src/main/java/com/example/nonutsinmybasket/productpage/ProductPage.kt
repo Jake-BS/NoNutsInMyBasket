@@ -16,8 +16,6 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_scanned_result.*
-import kotlinx.android.synthetic.main.toolbar.*
-
 class ProductPage : AppCompatActivity() {
 
     private lateinit var viewModel: MainViewModel
@@ -31,6 +29,7 @@ class ProductPage : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_scanned_result)
+        toolbar_back.setOnClickListener { super.onBackPressed() }
 
         db = FirebaseFirestore.getInstance()
 

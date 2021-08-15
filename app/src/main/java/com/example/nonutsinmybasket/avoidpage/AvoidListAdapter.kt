@@ -36,6 +36,9 @@ class AvoidListAdapter (
                 notifyDataSetChanged()
             }
         }
+        val params = holder.itemView.layoutParams as RecyclerView.LayoutParams
+        params.topMargin = 20
+        holder.itemView.layoutParams = params
     }
 
     override fun getItemCount(): Int {
