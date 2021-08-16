@@ -7,7 +7,7 @@
     android:background="#ffffff"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context="Activity.SplashScreen">
+    tools:context="activity.SplashScreen">
 
     <RelativeLayout
         android:layout_width="match_parent"

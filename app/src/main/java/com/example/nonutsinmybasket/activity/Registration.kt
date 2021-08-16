@@ -1,4 +1,4 @@
-package com.example.nonutsinmybasket.Activity
+package com.example.nonutsinmybasket.activity
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
