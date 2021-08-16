@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/bg"
     android:focusableInTouchMode="true"
-    tools:context=".Activity.Registration">
+    tools:context=".activity.Registration">
 
     <LinearLayout
         android:id="@+id/footer"

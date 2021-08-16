@@ -1,4 +1,4 @@
-package com.example.nonutsinmybasket.Activity
+package com.example.nonutsinmybasket.activity
 
 import android.content.Context
 import android.content.Intent
@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.viewpager.widget.ViewPager.OnPageChangeListener
 import android.view.View
-import com.example.nonutsinmybasket.Adapter.BottomNavViewPagerAdapter
+import com.example.nonutsinmybasket.adapter.BottomNavViewPagerAdapter
 import com.example.nonutsinmybasket.Fragments.About
 import com.example.nonutsinmybasket.Fragments.Avoid
 import com.example.nonutsinmybasket.Fragments.Profile

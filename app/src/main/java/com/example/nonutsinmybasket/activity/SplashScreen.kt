@@ -1,4 +1,4 @@
-package com.example.nonutsinmybasket.Activity
+package com.example.nonutsinmybasket.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

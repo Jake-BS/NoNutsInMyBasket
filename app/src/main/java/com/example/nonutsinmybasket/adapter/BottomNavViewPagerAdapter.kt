@@ -1,4 +1,4 @@
-package com.example.nonutsinmybasket.Adapter
+package com.example.nonutsinmybasket.adapter
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
