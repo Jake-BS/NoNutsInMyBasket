@@ -22,8 +22,8 @@ import kotlinx.android.synthetic.main.fragment_avoid.view.*
 
 class Avoid(var userId: String?) : Fragment() {
     private val btnToggleDark: Switch? = null
-    private lateinit var avoidListAdapter: AvoidListAdapter
-    private lateinit var dietListAdapter: DietListAdapter
+    private var avoidListAdapter: AvoidListAdapter? = null
+    private var dietListAdapter: DietListAdapter? = null
     private lateinit var  db: FirebaseFirestore
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
@@ -70,7 +70,7 @@ class Avoid(var userId: String?) : Fragment() {
                 if (task.isSuccessful) {
                     val document = task.result
                     val ingredientsText = document?.get("custom_ingredients")
-                    avoidListAdapter.setIngredientsList(textToIngredient(ingredientsText as ArrayList<String>))
+                    avoidListAdapter!!.setIngredientsList(textToIngredient(ingredientsText as ArrayList<String>))
                     var rvAvoidList = view.rvAvoidList
                     rvAvoidList.adapter = avoidListAdapter
                     rvAvoidList.layoutManager = LinearLayoutManager(activity)
@@ -103,7 +103,7 @@ class Avoid(var userId: String?) : Fragment() {
     }
 
     fun settingUpDiets(selectedDiets: ArrayList<String>, view: View) {
-        dietListAdapter = DietListAdapter(mutableListOf(), this.avoidListAdapter)
+        dietListAdapter = this.avoidListAdapter?.let { DietListAdapter(mutableListOf(), it) }
         var rvDietList = view.rvDietsList
         rvDietList.adapter = dietListAdapter
         rvDietList.layoutManager = LinearLayoutManager(activity)
@@ -113,7 +113,7 @@ class Avoid(var userId: String?) : Fragment() {
                 if (diet.name == sDiet) diet.isChecked = true
             }
         }
-        for(diet in diets) dietListAdapter.addDiet(diet)
+        for(diet in diets) dietListAdapter?.addDiet(diet)
     }
 
     fun getDiets() : List<Diet>{
@@ -132,14 +132,14 @@ class Avoid(var userId: String?) : Fragment() {
         val ingredientName = etEnterIngredient.text.toString()
         if(ingredientName.isNotEmpty()) {
             val ingredient = Ingredient(ingredientName)
-            avoidListAdapter.addIngredient(ingredient)
+            avoidListAdapter?.addIngredient(ingredient)
             etEnterIngredient.text.clear()
         }
     }
 
     fun savePreferences() {
-        val currentIngredients = ingredientToText(avoidListAdapter.getIngredients())
-        val currentDiets = dietToText(dietListAdapter.getDiets())
+        val currentIngredients = avoidListAdapter?.let { ingredientToText(it.getIngredients()) }
+        val currentDiets = dietListAdapter?.let { dietToText(it.getDiets()) }
         val updatedUserData = hashMapOf(
             "custom_ingredients" to currentIngredients,
             "diets" to currentDiets
@@ -159,7 +159,7 @@ class Avoid(var userId: String?) : Fragment() {
     }
 
     override fun onPause() {
-        savePreferences()
+        if (dietListAdapter != null) savePreferences()
         super.onPause()
     }
 }
