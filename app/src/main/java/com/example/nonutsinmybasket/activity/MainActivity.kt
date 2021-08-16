@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
-        val view: View = binding!!.root
+        val view: View = binding!!.getRoot()
         setContentView(view)
 
         sharedPrefs=this?.getPreferences(Context.MODE_PRIVATE)?:return
