@@ -7,7 +7,7 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import com.example.nonutsinmybasket.databinding.FragmentProfileBinding
 
-class Profile : Fragment() {
+class Profile(userId: String?) : Fragment() {
     var binding: FragmentProfileBinding? = null
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#004aad</color>
+    <color name="colorPrimaryDark">#004aad</color>
+    <color name="colorAccent">#004aad</color>
+
+    <color name="bg">#F4F4F4</color>
+    <color name="background">#ffffff</color>
+
+
+    <color name="text1">#222222</color>
+    <color name="text2">#333333</color>
+    <color name="text3">#444444</color>
+    <color name="text4">#555555</color>
+
+</resources>

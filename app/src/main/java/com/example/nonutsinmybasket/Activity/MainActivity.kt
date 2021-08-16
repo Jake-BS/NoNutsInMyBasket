@@ -1,17 +1,12 @@
 package com.example.nonutsinmybasket.Activity
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.viewpager.widget.ViewPager.OnPageChangeListener
 import android.view.View
-import android.widget.Toast
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
 import com.example.nonutsinmybasket.Adapter.BottomNavViewPagerAdapter
 import com.example.nonutsinmybasket.Fragments.About
 import com.example.nonutsinmybasket.Fragments.Avoid
@@ -22,8 +17,6 @@ import com.google.firebase.firestore.FirebaseFirestore
 
 class MainActivity : AppCompatActivity() {
     private var binding: ActivityMainBinding? = null
-
-
 
     private lateinit var  db: FirebaseFirestore
 
@@ -80,7 +73,7 @@ class MainActivity : AppCompatActivity() {
         //adapter.addFrag(new Home(), "");
         adapter.addFrag(Avoid(userId), "")
         adapter.addFrag(Scan(userId), "")
-        adapter.addFrag(Profile(), "")
+        adapter.addFrag(Profile(userId), "")
         adapter.addFrag(About(), "")
         binding?.viewPager?.adapter = adapter
 

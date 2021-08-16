@@ -146,9 +146,10 @@ class Avoid(var userId: String?) : Fragment() {
         )
         if (userId != null) {
             db.collection("USERS").document(userId!!).update(updatedUserData as Map<String, Any>)
-                .addOnSuccessListener { Toast.makeText(activity,
-                    "Updated avoid list",
-                    Toast.LENGTH_LONG).show()}
+                .addOnSuccessListener { //Toast.makeText(activity,
+                    //"Updated avoid list",
+                    //Toast.LENGTH_LONG).show()
+                    }
                 .addOnFailureListener{ e->
                     Toast.makeText(activity,
                         "Didn't update avoid list, $e",
