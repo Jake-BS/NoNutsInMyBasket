@@ -64,6 +64,11 @@ class Scan(var userId: String?) : Fragment() {
 
                     view.scanPrompt.text = it.text
                     view.scanPrompt.visibility = View.INVISIBLE
+                    val intent = Intent(context, ProductPage::class.java)
+                    intent.putExtra("Barcode", view.scanPrompt.text.toString())
+                    if (userId != null) intent.putExtra("user_id", userId)
+                    intent.putExtra("Barcode", view.scanPrompt.text)
+                    startActivity(intent)
                 }
             }
 
@@ -77,11 +82,11 @@ class Scan(var userId: String?) : Fragment() {
 
 
         view.scanner_view.setOnClickListener{
-            val intent = Intent(context, ProductPage::class.java)
-            intent.putExtra("Barcode", view.scanPrompt.text.toString())
-            if (userId != null) intent.putExtra("user_id", userId)
-            intent.putExtra("Barcode", view.scanPrompt.text)
-            startActivity(intent)
+            //val intent = Intent(context, ProductPage::class.java)
+            //intent.putExtra("Barcode", view.scanPrompt.text.toString())
+            //if (userId != null) intent.putExtra("user_id", userId)
+            //intent.putExtra("Barcode", view.scanPrompt.text)
+            //startActivity(intent)
         }
 
 
