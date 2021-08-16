@@ -4,23 +4,40 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="44dp"
-    android:paddingStart="8dp">
+    android:paddingStart="8dp"
+    android:background="@drawable/bg_bottombar_content_15"
+    android:backgroundTint="@color/bg"
+    android:paddingVertical="@dimen/_2sdp">
 
-    <TextView
-        android:id="@+id/tvIngredient"
-        android:layout_width="0dp"
+    <LinearLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        android:textSize="15sp"
+        android:layout_gravity="center"
+        android:layout_weight="0.1"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btnRemoveIngredient"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tvIngredient"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:fontFamily="@font/p_medium"
+            android:maxLines="1"
+            android:text="Lorem Ipsum"
+            android:textColor="@color/text4"
+            android:textSize="@dimen/_10sdp" />
+
+    </LinearLayout>
 
     <ImageButton
         android:id="@+id/btnRemoveIngredient"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_weight="0.1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"

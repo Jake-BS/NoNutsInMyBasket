@@ -4,16 +4,31 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/NoNutsInMyBasket/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.67" />
+        <entry key="..\:/NoNutsInMyBasket/app/src/main/res/drawable/bg_bottombar_content_15.xml" value="0.4676923076923077" />
+        <entry key="..\:/NoNutsInMyBasket/app/src/main/res/drawable/bg_bottombar_content_15_trans.xml" value="0.4676923076923077" />
+        <entry key="..\:/NoNutsInMyBasket/app/src/main/res/drawable/bg_rounded_ractangle_10.xml" value="0.4676923076923077" />
+        <entry key="..\:/NoNutsInMyBasket/app/src/main/res/drawable/bg_rounded_ractangle_5_stroke.xml" value="0.2625" />
         <entry key="..\:/NoNutsInMyBasket/app/src/main/res/drawable/ic_baseline_arrow_back_ios_24.xml" value="0.5462962962962963" />
         <entry key="..\:/NoNutsInMyBasket/app/src/main/res/drawable/ic_launcher_background.xml" value="0.5703125" />
         <entry key="..\:/NoNutsInMyBasket/app/src/main/res/layout/activity_avoid_list.xml" value="0.5" />
+        <entry key="..\:/NoNutsInMyBasket/app/src/main/res/layout/activity_login.xml" value="0.45740740740740743" />
         <entry key="..\:/NoNutsInMyBasket/app/src/main/res/layout/activity_login_page.xml" value="0.5" />
         <entry key="..\:/NoNutsInMyBasket/app/src/main/res/layout/activity_main.xml" value="0.5" />
         <entry key="..\:/NoNutsInMyBasket/app/src/main/res/layout/activity_product_page.xml" value="0.36666666666666664" />
         <entry key="..\:/NoNutsInMyBasket/app/src/main/res/layout/activity_register.xml" value="0.5" />
+        <entry key="..\:/NoNutsInMyBasket/app/src/main/res/layout/activity_registration.xml" value="0.5" />
+        <entry key="..\:/NoNutsInMyBasket/app/src/main/res/layout/activity_scaned_result.xml" value="0.5541666666666667" />
+        <entry key="..\:/NoNutsInMyBasket/app/src/main/res/layout/activity_scanned_result.xml" value="0.5541666666666667" />
+        <entry key="..\:/NoNutsInMyBasket/app/src/main/res/layout/activity_splash.xml" value="0.5541666666666667" />
+        <entry key="..\:/NoNutsInMyBasket/app/src/main/res/layout/fragment_about.xml" value="0.33" />
+        <entry key="..\:/NoNutsInMyBasket/app/src/main/res/layout/fragment_avoid.xml" value="0.5541666666666667" />
+        <entry key="..\:/NoNutsInMyBasket/app/src/main/res/layout/fragment_profile.xml" value="0.5541666666666667" />
+        <entry key="..\:/NoNutsInMyBasket/app/src/main/res/layout/fragment_scan.xml" value="0.45740740740740743" />
+        <entry key="..\:/NoNutsInMyBasket/app/src/main/res/layout/item_diet.xml" value="0.45740740740740743" />
+        <entry key="..\:/NoNutsInMyBasket/app/src/main/res/layout/item_ingredient.xml" value="0.5" />
+        <entry key="..\:/NoNutsInMyBasket/app/src/main/res/layout/toolbar.xml" value="0.5541666666666667" />
         <entry key="..\:/Users/kwsak/AndroidStudioProjects/NoNutsInMyBasket/app/src/main/res/layout/activity_main.xml" value="0.23072916666666668" />
         <entry key="..\:/Users/kwsak/AndroidStudioProjects/NoNutsInMyBasket/app/src/main/res/layout/activity_product_page.xml" value="0.6" />
-        <entry key="..\:/NoNutsInMyBasket/app/src/main/res/layout/toolbar.xml" value="0.5541666666666667" />
       </map>
     </option>
   </component>

@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg"
+    android:focusableInTouchMode="true"
+    tools:context=".Fragments.About">
+
+    <LinearLayout
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_45sdp"
+        android:background="#ffffff"
+        android:elevation="@dimen/_1sdp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/_5sdp"
+                android:layout_weight="1"
+                android:fontFamily="@font/p_semibold"
+                android:text="About Page/TOS"
+                android:textColor="@color/text1"
+                android:textSize="@dimen/_12sdp" />
+
+            <ImageView
+                android:id="@+id/aboutLogo"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_gravity="center"
+                android:padding="@dimen/_10sdp"
+                android:src="@drawable/icon" />
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/aboutImage"
+                android:layout_width="@dimen/_150sdp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:adjustViewBounds="true"
+                android:background="@drawable/bg_rounded_ractangle_10"
+                android:padding="@dimen/_5sdp"
+                android:src="@drawable/demo_image" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_10sdp"
+                android:background="@drawable/bg_rounded_ractangle_10"
+                android:orientation="vertical"
+                android:padding="@dimen/_10sdp">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/p_semibold"
+                    android:text="About Us"
+                    android:textColor="@color/text1"
+                    android:textSize="@dimen/_11sdp" />
+
+
+                <TextView
+                    android:id="@+id/aboutUs"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:fontFamily="@font/p_reguler"
+                    android:justificationMode="inter_word"
+                    android:letterSpacing="0.03"
+                    android:lineHeight="@dimen/_15sdp"
+                    android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam a est massa. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Morbi sed lacus sit amet sapien posuere euismod."
+                    android:textColor="@color/text3"
+                    android:textSize="@dimen/_10ssp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_10sdp"
+                android:background="@drawable/bg_rounded_ractangle_10"
+                android:orientation="vertical"
+                android:padding="@dimen/_10sdp">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/p_semibold"
+                    android:text="Terms of Service"
+                    android:textColor="@color/text1"
+                    android:textSize="@dimen/_11sdp" />
+
+
+                <TextView
+                    android:id="@+id/TOS"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:fontFamily="@font/p_reguler"
+                    android:justificationMode="inter_word"
+                    android:letterSpacing="0.03"
+                    android:lineHeight="@dimen/_15sdp"
+                    android:text="Terms of use:
+By using the Avoid application (this application), you agree to the below terms of use.
+All uses of 'We', 'we' and 'our' in the terms of use refers to the Avoid Team (developers at DeezAppsInc).
+
+Not Medical Advice:
+The Avoid app is not attempting to give any form of medical advice, and is not to be substituted for, or used against the advice of a doctor.
+
+Responsibilities:
+We are not responsible for incorrect or missing allergens and ingredients, when scanning a product, or ever.
+
+Avoid is developed using the Open Food Facts API that is editable by anyone, and so we ALWAYS advise reading the label of a product even if no breach in dietry
+or allergy requirement is detected.
+
+Neither the Avoid team, nor Open Food Facts take responsibilty for any breach in diet preference, or reaction to any product scanned by the Avoid app.
+
+Storing your data:
+By creating an account, you agree for your email, as well as your dietry requirements to be stored on our Google FireBase database.
+We take no responsibility for others accessing your account if you fail to keep your login details private.
+
+Changes to terms of use:
+The above terms of use may be changed at any time, any change to these Terms of Use will be effective as soon as they are posted.
+By continuing to use the app after these changes you are showing your acceptance of these changed Terms of Use.
+"
+                    android:textColor="@color/text3"
+                    android:textSize="@dimen/_10ssp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_10sdp"
+                android:background="@drawable/bg_rounded_ractangle_10"
+                android:orientation="vertical"
+                android:padding="@dimen/_10sdp">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/p_semibold"
+                    android:text="Privacy Policy"
+                    android:textColor="@color/text1"
+                    android:textSize="@dimen/_11sdp" />
+
+
+                <TextView
+                    android:id="@+id/privacyPolicy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:fontFamily="@font/p_reguler"
+                    android:justificationMode="inter_word"
+                    android:letterSpacing="0.03"
+                    android:lineHeight="@dimen/_15sdp"
+                    android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam a est massa. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Morbi sed lacus sit amet sapien posuere euismod."
+                    android:textColor="@color/text3"
+                    android:textSize="@dimen/_10ssp" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</RelativeLayout>

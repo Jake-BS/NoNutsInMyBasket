@@ -1,54 +1,56 @@
-package com.example.nonutsinmybasket
+package com.example.nonutsinmybasket.Activity
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
-import android.util.Log
+import android.view.View
 import android.widget.Toast
-import com.google.android.gms.tasks.OnCompleteListener
+import com.example.nonutsinmybasket.databinding.ActivityRegistrationBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.ktx.Firebase
-import kotlinx.android.synthetic.main.activity_register.*
+import kotlinx.android.synthetic.main.activity_registration.*
 
-class Register : AppCompatActivity() {
+class Registration : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private lateinit var db: FirebaseFirestore
-
+    private var binding: ActivityRegistrationBinding? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_register)
-
+        binding = ActivityRegistrationBinding.inflate(
+            layoutInflater
+        )
+        val view: View = binding!!.getRoot()
+        setContentView(view)
+        binding!!.toolbarBack.setOnClickListener { finish() }
         registerButtonClickListener()
 
         auth = FirebaseAuth.getInstance()
         db = FirebaseFirestore.getInstance()
     }
-
     fun registerButtonClickListener() {
         btnRegister.setOnClickListener{
             when {
                 //Checks for empty fields
                 TextUtils.isEmpty(etRegisterEmail.text.toString().trim {it <= ' '}) -> {
                     Toast.makeText(
-                        this@Register,
+                        this@Registration,
                         "Please enter your email",
                         Toast.LENGTH_SHORT
                     ).show()
                 }
-                TextUtils.isEmpty(etRegisterPassword.text.toString().trim {it <= ' '}) -> {
+                TextUtils.isEmpty(etConfirmPassword.text.toString().trim {it <= ' '}) -> {
                     Toast.makeText(
-                        this@Register,
+                        this@Registration,
                         "Please enter your password",
                         Toast.LENGTH_SHORT
                     ).show()
                 }
                 TextUtils.isEmpty(etConfirmPassword.text.toString().trim {it <= ' '}) -> {
                     Toast.makeText(
-                        this@Register,
+                        this@Registration,
                         "Please confirm your password",
                         Toast.LENGTH_SHORT
                     ).show()
@@ -61,17 +63,16 @@ class Register : AppCompatActivity() {
             }
         }
     }
-
     private fun registerClicked() {
         val email: String = etRegisterEmail.text.toString().trim {it <= ' '}
-        val password: String = etRegisterPassword.text.toString().trim {it <= ' '}
+        val password: String = etConfirmPassword.text.toString().trim {it <= ' '}
         val confirmPassword: String = etConfirmPassword.text.toString().trim {it <= ' '}
 
         if(password == confirmPassword) {
             val users = db.collection("USERS")
             register(email, password, users)
         } else {
-            Toast.makeText(this@Register,
+            Toast.makeText(this@Registration,
                 "The two passwords entered are different",
                 Toast.LENGTH_SHORT).show()
         }
@@ -93,19 +94,19 @@ class Register : AppCompatActivity() {
                     users.document(userId).set(user)
                         .addOnFailureListener { e ->
                             Toast.makeText(
-                                this@Register,
+                                this@Registration,
                                 "Failure writing doucment, $e",
                                 Toast.LENGTH_SHORT
                             ).show()
                         }.addOnSuccessListener {
                             Toast.makeText(
-                                this@Register,
+                                this@Registration,
                                 "You've successfully registered!",
                                 Toast.LENGTH_SHORT
                             ).show()
                         }
 
-                    val intent = Intent(this@Register, MainActivity::class.java)
+                    val intent = Intent(this@Registration, MainActivity::class.java)
                     intent.flags =
                         Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                     intent.putExtra("user_id", userId)
@@ -114,11 +115,12 @@ class Register : AppCompatActivity() {
                     finish()
                 } else {
                     Toast.makeText(
-                        this@Register,
+                        this@Registration,
                         task.exception!!.message.toString(),
                         Toast.LENGTH_SHORT
                     ).show()
                 }
             }
     }
+
 }
