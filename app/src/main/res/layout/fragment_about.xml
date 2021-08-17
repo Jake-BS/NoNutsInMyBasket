@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/bg"
     android:focusableInTouchMode="true"
-    tools:context=".Fragments.About">
+    tools:context=".fragments.About">
 
     <LinearLayout
         android:id="@+id/toolbar"

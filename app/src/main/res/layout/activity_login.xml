@@ -304,7 +304,7 @@
                             android:fontFamily="@font/p_reguler"
                             android:justificationMode="inter_word"
                             android:letterSpacing="0.03"
-                            android:text="write@nonuts.com"
+                            android:text="deezappsinc@gmail.com"
                             android:textColor="@color/text3"
                             android:textSize="@dimen/_10ssp" />
 
@@ -334,6 +334,7 @@
                             android:layout_height="@dimen/_12sdp"
                             android:layout_gravity="center"
                             android:src="@drawable/ic_call"
+                            android:visibility="invisible"
                             app:tint="@color/text4" />
 
                         <TextView
@@ -347,7 +348,8 @@
                             android:letterSpacing="0.03"
                             android:text="+88 01234 11 22 33"
                             android:textColor="@color/text3"
-                            android:textSize="@dimen/_10ssp" />
+                            android:textSize="@dimen/_10ssp"
+                            android:visibility="invisible" />
 
                         <ImageView
                             android:layout_width="@dimen/_12sdp"
@@ -356,6 +358,7 @@
                             android:layout_marginLeft="@dimen/_5sdp"
                             android:rotation="180"
                             android:src="@drawable/ic_arrow"
+                            android:visibility="invisible"
                             app:tint="#888888" />
 
                     </LinearLayout>

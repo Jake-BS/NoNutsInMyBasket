@@ -45,7 +45,7 @@ class Login : AppCompatActivity() {
         }
     }
 
-    fun login() {
+    private fun login() {
         val email: String = etLoginEmail.text.toString().trim {it <= ' '}
         val password: String = etLoginPassword.text.toString().trim {it <= ' '}
         FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password)

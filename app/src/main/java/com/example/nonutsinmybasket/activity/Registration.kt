@@ -30,7 +30,7 @@ class Registration : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
         db = FirebaseFirestore.getInstance()
     }
-    fun registerButtonClickListener() {
+    private fun registerButtonClickListener() {
         btnRegister.setOnClickListener{
             when {
                 //Checks for empty fields

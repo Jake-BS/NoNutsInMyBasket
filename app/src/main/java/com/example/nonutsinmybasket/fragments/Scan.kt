@@ -1,4 +1,4 @@
-package com.example.nonutsinmybasket.Fragments
+package com.example.nonutsinmybasket.fragments
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -67,7 +67,6 @@ class Scan(var userId: String?) : Fragment() {
                     val intent = Intent(context, ProductPage::class.java)
                     intent.putExtra("Barcode", view.scanPrompt.text.toString())
                     if (userId != null) intent.putExtra("user_id", userId)
-                    intent.putExtra("Barcode", view.scanPrompt.text)
                     startActivity(intent)
                 }
             }

@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/bg"
     android:orientation="vertical"
-    tools:context=".Fragments.Avoid">
+    tools:context=".fragments.Avoid">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -102,7 +102,7 @@
                     android:ellipsize="end"
                     android:fontFamily="@font/p_semibold"
                     android:maxLines="1"
-                    android:text="Lists"
+                    android:text="Banned Ingredients List"
                     android:textColor="@color/text1"
                     android:textSize="@dimen/_9sdp" />
 

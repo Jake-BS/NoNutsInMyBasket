@@ -3,8 +3,6 @@ package com.example.nonutsinmybasket.productpage
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.View
-import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
@@ -14,7 +12,6 @@ import com.example.nonutsinmybasket.productpage.api.MainViewModelFactory
 import com.example.nonutsinmybasket.productpage.api.Repository
 import com.google.firebase.firestore.FirebaseFirestore
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_scanned_result.*
 class ProductPage : AppCompatActivity() {
 
@@ -32,8 +29,6 @@ class ProductPage : AppCompatActivity() {
         toolbar_back.setOnClickListener { super.onBackPressed() }
 
         db = FirebaseFirestore.getInstance()
-
-        val intent = getIntent()
 
         val barcodeData = intent.getStringExtra("Barcode")
         val userId = intent.getStringExtra("user_id")
