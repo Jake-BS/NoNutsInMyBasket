@@ -1,5 +1,32 @@
 <resources>
-    <string name="app_name">NoNuts</string>
+    <string name="app_name">Avoid</string>
+    <string name="terms_of_use">
+        Terms of use:\n
+By using the Avoid application (this application), you agree to the below terms of use.
+All uses of \"We\", \"we\" and \"our\" in the terms of use refers to the Avoid Team (developers at DeezAppsInc).\n\n
 
-    <!-- TODO: Remove or change this placeholder text -->
+Not Medical Advice:\n
+The Avoid app is not attempting to give any form of medical advice, and is not to be substituted for, or used against the advice of a doctor.\n\n
+
+Responsibilities:\n
+We are not responsible for incorrect or missing allergens and ingredients, when scanning a product, or ever.
+
+Avoid is developed using the Open Food Facts API that is editable by anyone, and so we ALWAYS advise reading the label of a product even if no breach in dietary
+or allergy requirement is detected.
+
+Neither the Avoid team, nor Open Food Facts take responsibility for any breach in diet preference, or reaction to any product scanned by the Avoid app.\n\n
+
+Storing your data:\n
+By creating an account, you agree for your email, as well as your dietary requirements to be stored on our Google FireBase database.
+We take no responsibility for others accessing your account if you fail to keep your login details private.\n\n
+
+Changes to terms of use:\n
+The above terms of use may be changed at any time, any change to these Terms of Use will be effective as soon as they are posted.
+By continuing to use the app after these changes you are showing your acceptance of these changed Terms of Use.
+    </string>
+    <string name="privacy_policy">
+        This section informs you of our policies regarding the collection, use, and sharing of personal data when you sign up for, and use the "Avoid" application.\n\n
+        Personal data we collect includes your email address, and associated with that email address are the individual ingredients and diet presets you have selected while using the app.
+    </string>
+    <string name="about_us">The Avoid app was developed in order to help those with dietary requirements speed up shopping. Especially for diets like veganism, that have hundreds of ingredients to remember to avoid!</string>
 </resources>

@@ -41,4 +41,8 @@ class Profile(var userId: String?, var sharedPrefs: SharedPreferences) : Fragmen
             activity?.finish()
         }
     }
+
+    private fun setupUpdateDetails(sharedPrefs: SharedPreferences, userId: String?) {
+
+    }
 }

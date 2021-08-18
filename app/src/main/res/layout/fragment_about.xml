@@ -95,7 +95,7 @@
                     android:justificationMode="inter_word"
                     android:letterSpacing="0.03"
                     android:lineHeight="@dimen/_15sdp"
-                    android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam a est massa. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Morbi sed lacus sit amet sapien posuere euismod."
+                    android:text="@string/about_us"
                     android:textColor="@color/text3"
                     android:textSize="@dimen/_10ssp" />
             </LinearLayout>
@@ -127,29 +127,7 @@
                     android:justificationMode="inter_word"
                     android:letterSpacing="0.03"
                     android:lineHeight="@dimen/_15sdp"
-                    android:text="Terms of use:
-By using the Avoid application (this application), you agree to the below terms of use.
-All uses of 'We', 'we' and 'our' in the terms of use refers to the Avoid Team (developers at DeezAppsInc).
-
-Not Medical Advice:
-The Avoid app is not attempting to give any form of medical advice, and is not to be substituted for, or used against the advice of a doctor.
-
-Responsibilities:
-We are not responsible for incorrect or missing allergens and ingredients, when scanning a product, or ever.
-
-Avoid is developed using the Open Food Facts API that is editable by anyone, and so we ALWAYS advise reading the label of a product even if no breach in dietry
-or allergy requirement is detected.
-
-Neither the Avoid team, nor Open Food Facts take responsibilty for any breach in diet preference, or reaction to any product scanned by the Avoid app.
-
-Storing your data:
-By creating an account, you agree for your email, as well as your dietry requirements to be stored on our Google FireBase database.
-We take no responsibility for others accessing your account if you fail to keep your login details private.
-
-Changes to terms of use:
-The above terms of use may be changed at any time, any change to these Terms of Use will be effective as soon as they are posted.
-By continuing to use the app after these changes you are showing your acceptance of these changed Terms of Use.
-"
+                    android:text="@string/terms_of_use"
                     android:textColor="@color/text3"
                     android:textSize="@dimen/_10ssp" />
             </LinearLayout>
@@ -181,7 +159,7 @@ By continuing to use the app after these changes you are showing your acceptance
                     android:justificationMode="inter_word"
                     android:letterSpacing="0.03"
                     android:lineHeight="@dimen/_15sdp"
-                    android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam a est massa. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Morbi sed lacus sit amet sapien posuere euismod."
+                    android:text="@string/privacy_policy"
                     android:textColor="@color/text3"
                     android:textSize="@dimen/_10ssp" />
             </LinearLayout>

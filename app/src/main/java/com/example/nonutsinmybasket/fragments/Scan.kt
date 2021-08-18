@@ -78,30 +78,7 @@ class Scan(var userId: String?) : Fragment() {
                 }
             }
         }
-
-
-        view.scanner_view.setOnClickListener{
-            //val intent = Intent(context, ProductPage::class.java)
-            //intent.putExtra("Barcode", view.scanPrompt.text.toString())
-            //if (userId != null) intent.putExtra("user_id", userId)
-            //intent.putExtra("Barcode", view.scanPrompt.text)
-            //startActivity(intent)
-        }
-
-
-    }
-
-
-
-    override fun onResume() {
-        super.onResume()
         codeScanner.startPreview()
-    }
-
-    override fun onPause() {
-
-        codeScanner.releaseResources()
-        super.onPause()
     }
 
     private fun setupPermissions() {
