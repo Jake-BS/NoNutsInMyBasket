@@ -62,12 +62,14 @@ class Scan(var userId: String?) : Fragment() {
             decodeCallback = DecodeCallback {
                 activity?.runOnUiThread {
 
-                    view.scanPrompt.text = it.text
                     view.scanPrompt.visibility = View.INVISIBLE
+                    view.scanPrompt.text = it.text
                     val intent = Intent(context, ProductPage::class.java)
                     intent.putExtra("Barcode", view.scanPrompt.text.toString())
                     if (userId != null) intent.putExtra("user_id", userId)
                     intent.putExtra("Barcode", view.scanPrompt.text)
+                    view.scanPrompt.text = "Ensure Barcode is the same orientation as your phone"
+                    view.scanPrompt.visibility = View.VISIBLE
                     startActivity(intent)
                 }
             }

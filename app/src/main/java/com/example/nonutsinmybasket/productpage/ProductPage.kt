@@ -74,7 +74,7 @@ class ProductPage : AppCompatActivity() {
 
                 val imageURL = response.body()?.product?.image_front_url
                 if(imageURL==null)
-                    Glide.with(this).load(R.drawable.jake).into(imageView)
+                    Glide.with(this).load(R.drawable.logo).into(imageView)
                 else {
                     val into = Picasso.get().load(imageURL).into(imageView)
                     //noImagePrompt.visibility=View.INVISIBLE
