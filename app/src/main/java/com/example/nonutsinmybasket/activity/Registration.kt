@@ -41,14 +41,14 @@ class Registration : AppCompatActivity() {
                         Toast.LENGTH_SHORT
                     ).show()
                 }
-                TextUtils.isEmpty(etConfirmPassword.text.toString().trim {it <= ' '}) -> {
+                TextUtils.isEmpty(etRegistrationPassword.text.toString().trim {it <= ' '}) -> {
                     Toast.makeText(
                         this@Registration,
                         "Please enter your password",
                         Toast.LENGTH_SHORT
                     ).show()
                 }
-                TextUtils.isEmpty(etConfirmPassword.text.toString().trim {it <= ' '}) -> {
+                TextUtils.isEmpty(etRegistrationConfirmPassword.text.toString().trim {it <= ' '}) -> {
                     Toast.makeText(
                         this@Registration,
                         "Please confirm your password",
@@ -65,8 +65,8 @@ class Registration : AppCompatActivity() {
     }
     private fun registerClicked() {
         val email: String = etRegisterEmail.text.toString().trim {it <= ' '}
-        val password: String = etConfirmPassword.text.toString().trim {it <= ' '}
-        val confirmPassword: String = etConfirmPassword.text.toString().trim {it <= ' '}
+        val password: String = etRegistrationPassword.text.toString().trim {it <= ' '}
+        val confirmPassword: String = etRegistrationConfirmPassword.text.toString().trim {it <= ' '}
 
         if(password == confirmPassword) {
             val users = db.collection("USERS")

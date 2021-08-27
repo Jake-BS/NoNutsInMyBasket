@@ -121,7 +121,7 @@
                         android:textSize="@dimen/_10sdp"
                         android:visibility="gone" />
 
-                    <LinearLayout
+                    <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_10sdp"
@@ -141,9 +141,9 @@
                             android:maxLines="1"
                             android:textColor="@color/text1"
                             android:textColorHint="@color/text4"
-                            android:textSize="@dimen/_12sdp" />
+                            android:textSize="@dimen/_8sdp" />
 
-                    </LinearLayout>
+                    </com.google.android.material.textfield.TextInputLayout>
 
                 </LinearLayout>
 
@@ -154,16 +154,17 @@
                     android:layout_marginTop="@dimen/_10sdp"
                     android:orientation="horizontal">
 
-                    <LinearLayout
+                    <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:background="@drawable/bg_rounded_ractangle_5_stroke"
                         android:orientation="horizontal"
-                        android:padding="@dimen/_10sdp">
+                        android:padding="@dimen/_10sdp"
+                        app:passwordToggleEnabled="true">
 
-                        <EditText
-                            android:id="@+id/etConfirmPassword"
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etRegistrationPassword"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -174,19 +175,9 @@
                             android:maxLines="1"
                             android:textColor="@color/text1"
                             android:textColorHint="@color/text4"
-                            android:textSize="@dimen/_12sdp" />
+                            android:textSize="@dimen/_8sdp" />
 
-                        <ImageView
-                            android:id="@+id/show_pass_btn"
-                            android:layout_width="@dimen/_25sdp"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="center"
-                            android:adjustViewBounds="true"
-                            android:alpha=".5"
-                            android:padding="@dimen/_2sdp"
-                            android:src="@drawable/ic_eye" />
-
-                    </LinearLayout>
+                    </com.google.android.material.textfield.TextInputLayout>
 
                 </LinearLayout>
 
@@ -196,16 +187,17 @@
                     android:layout_marginTop="@dimen/_10sdp"
                     android:orientation="horizontal">
 
-                    <LinearLayout
+                    <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:background="@drawable/bg_rounded_ractangle_5_stroke"
                         android:orientation="horizontal"
-                        android:padding="@dimen/_10sdp">
+                        android:padding="@dimen/_10sdp"
+                        app:passwordToggleEnabled="true">
 
-                        <EditText
-                            android:id="@+id/confirmpassword"
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etRegistrationConfirmPassword"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -216,19 +208,9 @@
                             android:maxLines="1"
                             android:textColor="@color/text1"
                             android:textColorHint="@color/text4"
-                            android:textSize="@dimen/_12sdp" />
+                            android:textSize="@dimen/_8sdp" />
 
-                        <ImageView
-                            android:id="@+id/show_pass_btn_cp"
-                            android:layout_width="@dimen/_25sdp"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="center"
-                            android:adjustViewBounds="true"
-                            android:alpha=".5"
-                            android:padding="@dimen/_2sdp"
-                            android:src="@drawable/ic_eye" />
-
-                    </LinearLayout>
+                    </com.google.android.material.textfield.TextInputLayout>
 
                 </LinearLayout>
 

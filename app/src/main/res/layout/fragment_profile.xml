@@ -37,7 +37,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/aboveFooter"
+        android:id="@+id/btnUpdate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -59,7 +59,7 @@
             android:layout_weight="1"
             android:fontFamily="@font/p_bold"
             android:gravity="center"
-            android:text="Update Information"
+            android:text="Update Password"
             android:textColor="@color/white"
             android:textSize="@dimen/_12sdp" />
     </LinearLayout>
@@ -77,86 +77,32 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <EditText
-                android:id="@+id/test"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#00ffffff"
-                android:fontFamily="@font/p_reguler"
-                android:hint=""
-                android:inputType="text"
-                android:textColor="@color/text1"
-                android:textColorHint="@color/text4"
-                android:textSize="@dimen/_10sdp"
-                android:visibility="gone" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:layout_weight="1"
-                android:background="@drawable/bg_rounded_ractangle_5_stroke"
-                android:orientation="vertical"
-                android:padding="@dimen/_10sdp">
-
-                <EditText
-                    android:id="@+id/etRegisterEmail"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#00ffffff"
-                    android:fontFamily="@font/p_reguler"
-                    android:hint="Email"
-                    android:inputType="text"
-                    android:maxLines="1"
-                    android:textColor="@color/text1"
-                    android:textColorHint="@color/text4"
-                    android:textSize="@dimen/_11sdp" />
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_10sdp"
             android:orientation="horizontal">
 
-            <LinearLayout
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@drawable/bg_rounded_ractangle_5_stroke"
                 android:orientation="horizontal"
-                android:padding="@dimen/_10sdp">
+                android:padding="@dimen/_8sdp"
+                app:passwordToggleEnabled="true">
 
-                <EditText
-                    android:id="@+id/etConfirmPassword"
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etUpdatePassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="#00ffffff"
                     android:fontFamily="@font/p_reguler"
-                    android:hint="Password"
+                    android:hint="New Password"
                     android:inputType="textPassword"
                     android:maxLines="1"
                     android:textColor="@color/text1"
                     android:textColorHint="@color/text4"
                     android:textSize="@dimen/_11sdp" />
 
-                <ImageView
-                    android:id="@+id/btnShowPass"
-                    android:layout_width="@dimen/_25sdp"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:adjustViewBounds="true"
-                    android:alpha=".5"
-                    android:padding="@dimen/_2sdp"
-                    android:src="@drawable/ic_eye" />
-
-            </LinearLayout>
+            </com.google.android.material.textfield.TextInputLayout>
 
         </LinearLayout>
 
@@ -166,16 +112,17 @@
             android:layout_marginTop="@dimen/_10sdp"
             android:orientation="horizontal">
 
-            <LinearLayout
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@drawable/bg_rounded_ractangle_5_stroke"
                 android:orientation="horizontal"
-                android:padding="@dimen/_10sdp">
+                android:padding="@dimen/_10sdp"
+                app:passwordToggleEnabled="true">
 
                 <EditText
-                    android:id="@+id/confirmpassword"
+                    android:id="@+id/etConfirmUpdatePassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -188,17 +135,7 @@
                     android:textColorHint="@color/text4"
                     android:textSize="@dimen/_11sdp" />
 
-                <ImageView
-                    android:id="@+id/btnShowConPass"
-                    android:layout_width="@dimen/_25sdp"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:adjustViewBounds="true"
-                    android:alpha=".5"
-                    android:padding="@dimen/_2sdp"
-                    android:src="@drawable/ic_eye" />
-
-            </LinearLayout>
+            </com.google.android.material.textfield.TextInputLayout>
 
         </LinearLayout>
 
