@@ -26,11 +26,18 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/_40sdp"
-                android:layout_marginLeft="@dimen/_5sdp"
                 android:adjustViewBounds="true"
                 android:alpha="1"
                 android:padding="@dimen/_6sdp"
-                android:src="@drawable/logo" />
+                android:src="@drawable/logoforbanner" />
+
+            <com.google.android.gms.ads.AdView
+                xmlns:ads="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/mainAdView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                ads:adSize="BANNER"
+                ads:adUnitId="ca-app-pub-3940256099942544/6300978111"></com.google.android.gms.ads.AdView>
 
         </LinearLayout>
 
@@ -128,5 +135,4 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/bubbleNavigationLinearView"
         android:layout_below="@+id/toolbar" />
-
 </RelativeLayout>
