@@ -13,6 +13,9 @@ import com.example.nonutsinmybasket.fragments.Avoid
 import com.example.nonutsinmybasket.fragments.Profile
 import com.example.nonutsinmybasket.fragments.Scan
 import com.example.nonutsinmybasket.databinding.ActivityMainBinding
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.MobileAds
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
     private var binding: ActivityMainBinding? = null
@@ -28,6 +31,10 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view: View = binding!!.getRoot()
         setContentView(view)
+
+        MobileAds.initialize(this@MainActivity)
+        val adRequest = AdRequest.Builder().build()
+        mainAdView.loadAd(adRequest)
 
         sharedPrefs=this?.getPreferences(Context.MODE_PRIVATE)?:return
         val isLogin=sharedPrefs.getString("Email", "1")

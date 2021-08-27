@@ -11,6 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.NoNutsInMyBasket">
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-4945457626615219~7043112116"/>
         <activity android:name=".productpage.ProductPage" />
         <activity android:name=".activity.Registration" />
         <activity android:name=".activity.Login" />

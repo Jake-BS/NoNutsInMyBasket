@@ -86,6 +86,11 @@ class Scan(var userId: String?) : Fragment() {
         codeScanner.startPreview()
     }
 
+    override fun onPause() {
+        codeScanner.releaseResources()
+        super.onPause()
+    }
+
     private fun setupPermissions() {
         val permission = activity?.let {
             ContextCompat.checkSelfPermission(

@@ -100,6 +100,8 @@ dependencies {
     //custom progressbar
     implementation 'com.github.silvestrpredko:dot-progress-bar:1.1'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    //ads
+    implementation 'com.google.android.gms:play-services-ads:19.3.0'
 
 }
 repositories {
