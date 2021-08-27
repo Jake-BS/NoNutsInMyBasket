@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/bg"
     android:orientation="vertical"
     tools:context=".fragments.Avoid">
@@ -88,7 +89,7 @@
                             android:layout_height="@dimen/_15sdp"
                             android:adjustViewBounds="true"
                             android:src="@drawable/ic_report"
-                            android:tint="@color/text4" />
+                            app:tint="@color/text4" />
 
                     </LinearLayout>
 
@@ -127,7 +128,7 @@
                     android:layout_marginLeft="@dimen/_3sdp"
                     android:adjustViewBounds="true"
                     android:src="@drawable/ic_sort"
-                    android:tint="@color/text4" />
+                    app:tint="@color/text4" />
 
             </LinearLayout>
 
@@ -162,7 +163,7 @@
                             android:layout_height="@dimen/_15sdp"
                             android:adjustViewBounds="true"
                             android:src="@drawable/ic_plus"
-                            android:tint="@color/text4" />
+                            app:tint="@color/text4" />
 
                     </LinearLayout>
 
@@ -186,11 +187,11 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvDietsList"
                 android:layout_width="match_parent"
-                android:layout_height="211dp"
+                android:layout_height="262dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="16dp"
                 android:adjustViewBounds="true"
-                android:background="@color/background"/>
+                android:background="@color/background" />
 
         </LinearLayout>
     </ScrollView>
