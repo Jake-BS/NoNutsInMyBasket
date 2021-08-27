@@ -47,9 +47,10 @@ class DietListAdapter (
                 else {
                     //Removes diet items when unchecked
                     var curIngredientsList = avoidListAdapter.getIngredients()
-                    for (avoidIngredient in curIngredientsList) {
-                        for (dietIngredient in curDiet.ingredientList) {
+                    for (dietIngredient in curDiet.ingredientList) {
+                        for (avoidIngredient in curIngredientsList) {
                             if (avoidIngredient.name == dietIngredient) avoidIngredient.delete = true
+                            break
                         }
                     }
                     avoidListAdapter.setIngredientsList(curIngredientsList)

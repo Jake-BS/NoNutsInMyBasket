@@ -57,9 +57,6 @@ class AvoidListAdapter (
 
     fun removeIngredients() {
         ingredients.removeAll{ ingredient ->  ingredient.delete}
-        //for (ingredient in ingredients) {
-        //    if (ingredient.delete) sqliteHelper.deleteIngredient(ingredient.name)
-        //}
         notifyDataSetChanged()
     }
 
