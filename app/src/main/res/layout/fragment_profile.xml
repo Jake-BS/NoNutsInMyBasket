@@ -1,211 +1,146 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg"
     android:focusableInTouchMode="true"
-    tools:context=".activity.Registration">
+    tools:context=".fragments.Profile">
 
     <LinearLayout
-        android:id="@+id/footer"
+        android:id="@+id/profileFooter"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_margin="@dimen/_10sdp"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_10sdp"
         android:background="@drawable/bg_rounded_ractangle_10"
         android:backgroundTint="@color/colorPrimary"
         android:orientation="vertical"
-        android:padding="@dimen/_10sdp">
+        android:padding="@dimen/_10sdp"
+        app:layout_constraintBottom_toBottomOf="parent">
 
         <TextView
+            android:id="@+id/btnLogout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
             android:fontFamily="@font/p_bold"
             android:gravity="center"
-            android:text="Update Information"
+            android:text="Logout"
             android:textColor="@color/white"
             android:textSize="@dimen/_12sdp" />
     </LinearLayout>
-    <ScrollView
+
+    <LinearLayout
+        android:id="@+id/btnUpdate"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/footer">
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:background="@drawable/bg_rounded_ractangle_10"
+        android:backgroundTint="@color/colorPrimary"
+        android:orientation="vertical"
+        android:padding="@dimen/_10sdp"
+        app:layout_constraintBottom_toTopOf="@id/profileFooter">
+
+        <TextView
+            android:id="@+id/updateInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:fontFamily="@font/p_bold"
+            android:gravity="center"
+            android:text="Update Password"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_12sdp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_rounded_ractangle_10"
+        android:orientation="vertical"
+        android:padding="@dimen/_10sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-            <LinearLayout
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/_5sdp"
-                android:layout_marginTop="@dimen/_5sdp"
-                android:layout_marginRight="@dimen/_5sdp"
-                android:layout_marginBottom="@dimen/_5sdp"
-                android:background="@drawable/bg_rounded_ractangle_10"
-                android:orientation="vertical"
-                android:padding="@dimen/_10sdp">
+                android:layout_weight="1"
+                android:background="@drawable/bg_rounded_ractangle_5_stroke"
+                android:orientation="horizontal"
+                android:padding="@dimen/_8sdp"
+                app:passwordToggleEnabled="true">
 
-                <LinearLayout
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etUpdatePassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:layout_weight="1"
+                    android:background="#00ffffff"
+                    android:fontFamily="@font/p_reguler"
+                    android:hint="New Password"
+                    android:inputType="textPassword"
+                    android:maxLines="1"
+                    android:textColor="@color/text1"
+                    android:textColorHint="@color/text4"
+                    android:textSize="@dimen/_11sdp" />
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:background="@drawable/bg_rounded_ractangle_5_stroke"
-                        android:orientation="vertical"
-                        android:padding="@dimen/_10sdp">
-
-                        <EditText
-                            android:id="@+id/fullname"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="#00ffffff"
-                            android:fontFamily="@font/p_reguler"
-                            android:hint="Full name"
-                            android:inputType="text"
-                            android:maxLines="1"
-                            android:textColor="@color/text1"
-                            android:textColorHint="@color/text4"
-                            android:textSize="@dimen/_11sdp" />
-
-                    </LinearLayout>
-
-                    <EditText
-                        android:id="@+id/test"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="#00ffffff"
-                        android:fontFamily="@font/p_reguler"
-                        android:hint=""
-                        android:inputType="text"
-                        android:textColor="@color/text1"
-                        android:textColorHint="@color/text4"
-                        android:textSize="@dimen/_10sdp"
-                        android:visibility="gone" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_10sdp"
-                        android:layout_weight="1"
-                        android:background="@drawable/bg_rounded_ractangle_5_stroke"
-                        android:orientation="vertical"
-                        android:padding="@dimen/_10sdp">
-
-                        <EditText
-                            android:id="@+id/etRegisterEmail"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="#00ffffff"
-                            android:fontFamily="@font/p_reguler"
-                            android:hint="Email"
-                            android:inputType="text"
-                            android:maxLines="1"
-                            android:textColor="@color/text1"
-                            android:textColorHint="@color/text4"
-                            android:textSize="@dimen/_11sdp" />
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:orientation="horizontal">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:background="@drawable/bg_rounded_ractangle_5_stroke"
-                        android:orientation="horizontal"
-                        android:padding="@dimen/_10sdp">
-
-                        <EditText
-                            android:id="@+id/etConfirmPassword"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:background="#00ffffff"
-                            android:fontFamily="@font/p_reguler"
-                            android:hint="Password"
-                            android:inputType="textPassword"
-                            android:maxLines="1"
-                            android:textColor="@color/text1"
-                            android:textColorHint="@color/text4"
-                            android:textSize="@dimen/_11sdp" />
-
-                        <ImageView
-                            android:id="@+id/show_pass_btn"
-                            android:layout_width="@dimen/_25sdp"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="center"
-                            android:adjustViewBounds="true"
-                            android:alpha=".5"
-                            android:padding="@dimen/_2sdp"
-                            android:src="@drawable/ic_eye" />
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:orientation="horizontal">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:background="@drawable/bg_rounded_ractangle_5_stroke"
-                        android:orientation="horizontal"
-                        android:padding="@dimen/_10sdp">
-
-                        <EditText
-                            android:id="@+id/confirmpassword"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:background="#00ffffff"
-                            android:fontFamily="@font/p_reguler"
-                            android:hint="Confirm Password"
-                            android:inputType="textPassword"
-                            android:maxLines="1"
-                            android:textColor="@color/text1"
-                            android:textColorHint="@color/text4"
-                            android:textSize="@dimen/_11sdp" />
-
-                        <ImageView
-                            android:id="@+id/show_pass_btn_cp"
-                            android:layout_width="@dimen/_25sdp"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="center"
-                            android:adjustViewBounds="true"
-                            android:alpha=".5"
-                            android:padding="@dimen/_2sdp"
-                            android:src="@drawable/ic_eye" />
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
-
-            </LinearLayout>
+            </com.google.android.material.textfield.TextInputLayout>
 
         </LinearLayout>
-    </ScrollView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:orientation="horizontal">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/bg_rounded_ractangle_5_stroke"
+                android:orientation="horizontal"
+                android:padding="@dimen/_10sdp"
+                app:passwordToggleEnabled="true">
+
+                <EditText
+                    android:id="@+id/etConfirmUpdatePassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="#00ffffff"
+                    android:fontFamily="@font/p_reguler"
+                    android:hint="Confirm Password"
+                    android:inputType="textPassword"
+                    android:maxLines="1"
+                    android:textColor="@color/text1"
+                    android:textColorHint="@color/text4"
+                    android:textSize="@dimen/_11sdp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
 
 
-</RelativeLayout>
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

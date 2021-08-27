@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg"
-    tools:context=".Fragments.Scan">
+    tools:context=".fragments.Scan">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -48,7 +48,7 @@
                 android:fontFamily="@font/p_medium"
                 android:gravity="center"
                 android:maxLines="1"
-                android:text="Ensure Barcode is the same orientation as your phone"
+                android:text="Make sure the numbers are at the top or bottom"
                 android:textColor="@color/text4"
                 android:textSize="@dimen/_10sdp" />
 

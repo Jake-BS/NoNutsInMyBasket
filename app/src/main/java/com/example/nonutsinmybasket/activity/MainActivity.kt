@@ -8,21 +8,16 @@ import android.os.Bundle
 import androidx.viewpager.widget.ViewPager.OnPageChangeListener
 import android.view.View
 import com.example.nonutsinmybasket.adapter.BottomNavViewPagerAdapter
-import com.example.nonutsinmybasket.Fragments.About
-import com.example.nonutsinmybasket.Fragments.Avoid
-import com.example.nonutsinmybasket.Fragments.Profile
-import com.example.nonutsinmybasket.Fragments.Scan
+import com.example.nonutsinmybasket.fragments.About
+import com.example.nonutsinmybasket.fragments.Avoid
+import com.example.nonutsinmybasket.fragments.Profile
+import com.example.nonutsinmybasket.fragments.Scan
 import com.example.nonutsinmybasket.databinding.ActivityMainBinding
-import com.google.firebase.firestore.FirebaseFirestore
 
 class MainActivity : AppCompatActivity() {
     private var binding: ActivityMainBinding? = null
 
-    private lateinit var  db: FirebaseFirestore
-
     private lateinit var currentEmail: String
-
-    var scanComplete = false
 
     lateinit var sharedPrefs: SharedPreferences
 
@@ -70,10 +65,9 @@ class MainActivity : AppCompatActivity() {
     private fun setFragmentsToViewPager() {
         // set fragments to view pager
         val adapter = BottomNavViewPagerAdapter(supportFragmentManager)
-        //adapter.addFrag(new Home(), "");
         adapter.addFrag(Avoid(userId), "")
         adapter.addFrag(Scan(userId), "")
-        adapter.addFrag(Profile(userId), "")
+        adapter.addFrag(Profile(userId, sharedPrefs), "")
         adapter.addFrag(About(), "")
         binding?.viewPager?.adapter = adapter
 
