@@ -3,6 +3,7 @@ package com.example.nonutsinmybasket.productpage
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
@@ -60,12 +61,11 @@ class ProductPage : AppCompatActivity() {
         viewModel.getPostDynamic(barcodeData)
         viewModel.myResponseDynamic.observe(this, Observer { response ->
             if (response.isSuccessful) {
-
-                val productName = response.body()?.product?.product_name?.lowercase()
+                //val productName = response.body()?.product?.product_name?.lowercase()
                 val productIngredients = response.body()?.product?.ingredients_text?.lowercase()
                 if (productIngredients != null) {
                     detectAndDisplayBannedIngredients(productIngredients, ingredientsText)
-                } else output.text = "Nothing to display"
+                } else avoidText.text = "Could not load ingredients for this item :/"
 
                 val imageURL = response.body()?.product?.image_front_url
                 if(imageURL==null)
@@ -76,7 +76,7 @@ class ProductPage : AppCompatActivity() {
                 }
             } else {
                 response.errorBody()?.let { Log.d("Response", it.string()) }
-                output.text = response.code().toString()
+                avoidText.text = "Error: "+ response.code().toString()
                 Picasso.get().load(placeholderImage).into(imageView)
             }
         })
@@ -84,6 +84,7 @@ class ProductPage : AppCompatActivity() {
 
     private fun detectAndDisplayBannedIngredients(productIngredients: String, ingredientsText: ArrayList<String>){
         var displayString = ""
+        var maybeDisplayString = ""
         var foundSomethingSwitch = false
         var maybeFoundSomethingSwitch = false
         for(ingredient in ingredientsText) {
@@ -118,27 +119,27 @@ class ProductPage : AppCompatActivity() {
                     if (foundSomethingSwitch) {
                         displayString = "$displayString, $ingredient"
                     }
-                    else if (!maybeFoundSomethingSwitch){
+                    else{
                         displayString = "Avoid buying - detected $ingredient"
                         foundSomethingSwitch = true
-                    } else {
-                        val previouslyDetected = displayString.substring(7)
-                        displayString = "A$previouslyDetected"
-                        foundSomethingSwitch = true
-                        maybeFoundSomethingSwitch = false
                     }
                 } else if (productIngredients.contains(ingredient.lowercase())) {
-                    if(foundSomethingSwitch || maybeFoundSomethingSwitch) {
-                        displayString = "$displayString, $ingredient is a sub-word of an ingredient"
+                    if(maybeFoundSomethingSwitch) {
+                        maybeDisplayString = "$maybeDisplayString, $ingredient"
                     } else{
-                        displayString = "Maybe avoid buying - $ingredient is a sub-word of an ingredient"
+                        maybeDisplayString = "Maybe avoid buying - $ingredient"
                         maybeFoundSomethingSwitch = true
                     }
                 }
             }
         }
-        if (foundSomethingSwitch || maybeFoundSomethingSwitch) output.text = displayString + "."
-        else output.text = "This product fits your dietary requirements, enjoy!"
+        avoidText.text = "None - this product fits your dietary requirements, enjoy!"
+        if (foundSomethingSwitch) avoidText.text = displayString + "."
+        if (maybeFoundSomethingSwitch) {
+            if (!foundSomethingSwitch) foundLayout.visibility = View.INVISIBLE
+            maybeFoundLayout.visibility = View.VISIBLE
+            maybeAvoidText.text = maybeDisplayString + "."
+        }
     }
 
 }
