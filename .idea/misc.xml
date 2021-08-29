@@ -18,7 +18,7 @@
         <entry key="..\:/NoNutsInMyBasket/app/src/main/res/layout/activity_register.xml" value="0.5" />
         <entry key="..\:/NoNutsInMyBasket/app/src/main/res/layout/activity_registration.xml" value="0.5" />
         <entry key="..\:/NoNutsInMyBasket/app/src/main/res/layout/activity_scaned_result.xml" value="0.5541666666666667" />
-        <entry key="..\:/NoNutsInMyBasket/app/src/main/res/layout/activity_scanned_result.xml" value="0.5541666666666667" />
+        <entry key="..\:/NoNutsInMyBasket/app/src/main/res/layout/activity_scanned_result.xml" value="0.5291113381001021" />
         <entry key="..\:/NoNutsInMyBasket/app/src/main/res/layout/activity_splash.xml" value="0.5541666666666667" />
         <entry key="..\:/NoNutsInMyBasket/app/src/main/res/layout/fragment_about.xml" value="0.33" />
         <entry key="..\:/NoNutsInMyBasket/app/src/main/res/layout/fragment_avoid.xml" value="0.31605351170568563" />
@@ -26,6 +26,7 @@
         <entry key="..\:/NoNutsInMyBasket/app/src/main/res/layout/fragment_scan.xml" value="0.45740740740740743" />
         <entry key="..\:/NoNutsInMyBasket/app/src/main/res/layout/item_diet.xml" value="0.45740740740740743" />
         <entry key="..\:/NoNutsInMyBasket/app/src/main/res/layout/item_ingredient.xml" value="0.5" />
+        <entry key="..\:/NoNutsInMyBasket/app/src/main/res/layout/test.xml" value="0.415625" />
         <entry key="..\:/NoNutsInMyBasket/app/src/main/res/layout/toolbar.xml" value="0.5541666666666667" />
         <entry key="..\:/Users/kwsak/AndroidStudioProjects/NoNutsInMyBasket/app/src/main/res/layout/activity_main.xml" value="0.23072916666666668" />
         <entry key="..\:/Users/kwsak/AndroidStudioProjects/NoNutsInMyBasket/app/src/main/res/layout/activity_product_page.xml" value="0.6" />

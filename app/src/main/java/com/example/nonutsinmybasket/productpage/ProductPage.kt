@@ -88,7 +88,7 @@ class ProductPage : AppCompatActivity() {
         var foundSomethingSwitch = false
         var maybeFoundSomethingSwitch = false
         for(ingredient in ingredientsText) {
-            if (productIngredients != null) {
+            if (productIngredients != null && (productIngredients.length > ingredient.length)) {
                 if (
                     //for middle ingredient scenario
                     productIngredients.contains(" "+ingredient.lowercase()+",") ||
@@ -136,8 +136,11 @@ class ProductPage : AppCompatActivity() {
         avoidText.text = "None - this product fits your dietary requirements, enjoy!"
         if (foundSomethingSwitch) avoidText.text = displayString + "."
         if (maybeFoundSomethingSwitch) {
-            if (!foundSomethingSwitch) foundLayout.visibility = View.INVISIBLE
-            maybeFoundLayout.visibility = View.VISIBLE
+            if (!foundSomethingSwitch) {
+                foundLayout.visibility = View.INVISIBLE
+                foundLayout.removeAllViews()
+                maybeFoundLayout.visibility = View.VISIBLE
+            }
             maybeAvoidText.text = maybeDisplayString + "."
         }
     }

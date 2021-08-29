@@ -41,6 +41,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_remove_button" />
+        app:srcCompat="@drawable/ic_baseline_remove_circle_outline_24"
+        android:backgroundTint='@color/bg'
+        app:tint='@color/text4' />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

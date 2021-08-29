@@ -103,7 +103,7 @@
             app:bt_iconHeight="@dimen/_14sdp"
             app:bt_iconWidth="@dimen/_14sdp"
             app:bt_shape="@drawable/bg_bottombar_content_15_trans"
-            app:bt_title=" Profile"
+            app:bt_title=" Account"
             app:bt_titlePadding="@dimen/_5sdp"
             app:bt_titleSize="@dimen/_12ssp"
             app:theme="@style/BottomNavigationViewTextStyle" />
