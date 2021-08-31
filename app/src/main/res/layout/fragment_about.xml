@@ -34,14 +34,6 @@
                 android:textColor="@color/text1"
                 android:textSize="@dimen/_12sdp" />
 
-            <ImageView
-                android:id="@+id/aboutLogo"
-                android:layout_width="@dimen/_40sdp"
-                android:layout_height="@dimen/_40sdp"
-                android:layout_gravity="center"
-                android:padding="@dimen/_10sdp"
-                android:src="@drawable/icon" />
-
 
         </LinearLayout>
     </LinearLayout>
@@ -65,7 +57,7 @@
                 android:adjustViewBounds="true"
                 android:background="@drawable/bg_rounded_ractangle_10"
                 android:padding="@dimen/_5sdp"
-                android:src="@drawable/demo_image" />
+                android:src="@drawable/logo_blue_seperate" />
 
             <LinearLayout
                 android:layout_width="match_parent"

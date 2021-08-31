@@ -29,7 +29,7 @@
                 android:adjustViewBounds="true"
                 android:alpha="1"
                 android:padding="@dimen/_6sdp"
-                android:src="@drawable/logoforbanner" />
+                android:src="@drawable/logo_blue_seperate" />
 
             <com.google.android.gms.ads.AdView
                 xmlns:ads="http://schemas.android.com/apk/res-auto"
