@@ -14,17 +14,22 @@
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="ca-app-pub-4945457626615219~7043112116"/>
-        <activity android:name=".productpage.ProductPage" />
-        <activity android:name=".activity.Registration" />
-        <activity android:name=".activity.Login" />
-        <activity android:name=".activity.MainActivity" >
+        <activity android:name=".productpage.ProductPage"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.Registration"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.Login"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.MainActivity"
+            android:screenOrientation="portrait">
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
 
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
         </activity>
-        <activity android:name=".activity.SplashScreen">
+        <activity android:name=".activity.SplashScreen"
+            android:screenOrientation="portrait">
 
         </activity>
     </application>

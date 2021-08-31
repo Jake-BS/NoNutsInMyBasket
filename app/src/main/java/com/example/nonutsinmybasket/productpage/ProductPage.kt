@@ -134,14 +134,26 @@ class ProductPage : AppCompatActivity() {
             }
         }
         avoidText.text = "None - this product fits your dietary requirements, enjoy!"
-        if (foundSomethingSwitch) avoidText.text = displayString + "."
+        if (foundSomethingSwitch) {
+            avoidText.text = displayString + "."
+            munchSign.setImageResource(R.drawable.ic_nofood)
+            munchSign.visibility = View.VISIBLE
+        }
         if (maybeFoundSomethingSwitch) {
             if (!foundSomethingSwitch) {
                 foundLayout.visibility = View.INVISIBLE
                 foundLayout.removeAllViews()
                 maybeFoundLayout.visibility = View.VISIBLE
+                munchSign.setImageResource(R.drawable.ic_mmaybefood)
+                munchSign.visibility = View.VISIBLE
+            } else {
+                maybeFoundLayout.visibility = View.VISIBLE
             }
             maybeAvoidText.text = maybeDisplayString + "."
+        }
+        if (!foundSomethingSwitch && !maybeFoundSomethingSwitch) {
+            munchSign.setImageResource(R.drawable.ic_mmfood)
+            munchSign.visibility = View.VISIBLE
         }
     }
 
