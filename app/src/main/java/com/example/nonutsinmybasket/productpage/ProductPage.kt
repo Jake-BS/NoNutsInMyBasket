@@ -77,7 +77,7 @@ class ProductPage : AppCompatActivity() {
             } else {
                 response.errorBody()?.let { Log.d("Response", it.string()) }
                 avoidText.text = "Error: "+ response.code().toString()
-                Picasso.get().load(placeholderImage).into(imageView)
+                Picasso.get().load(R.drawable.logo_blue_seperate).into(imageView)
             }
         })
     }

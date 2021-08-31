@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.viewpager.widget.ViewPager.OnPageChangeListener
 import android.view.View
+import android.view.WindowManager
 import com.example.nonutsinmybasket.adapter.BottomNavViewPagerAdapter
 import com.example.nonutsinmybasket.fragments.About
 import com.example.nonutsinmybasket.fragments.Avoid
@@ -27,6 +28,9 @@ class MainActivity : AppCompatActivity() {
     var userId: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
+        //window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
+
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view: View = binding!!.getRoot()
