@@ -64,10 +64,4 @@ class AvoidListAdapter (
         ingredients = newIngredients
         notifyDataSetChanged()
     }
-
-    fun sort() {
-        if (ingredients != null) ingredients.sortBy { it.toString() }
-    }
-
-
 }

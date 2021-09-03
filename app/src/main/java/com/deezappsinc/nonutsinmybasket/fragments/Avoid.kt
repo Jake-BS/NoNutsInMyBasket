@@ -171,7 +171,15 @@ class Avoid(var userId: String?) : Fragment() {
         super.onPause()
     }
 
-    fun setupSort() {
-        btnSort.setOnClickListener { avoidListAdapter?.sort() }
+    private fun setupSort() {
+        btnSort.setOnClickListener {
+            var ingredients = avoidListAdapter?.getIngredients()
+            if (ingredients != null) {
+                var textIngredients = ingredientToText(ingredients)
+                textIngredients.sort()
+                ingredients = textToIngredient(textIngredients)
+                avoidListAdapter?.setIngredientsList(ingredients)
+            }
+        }
     }
 }
