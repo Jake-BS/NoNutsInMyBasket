@@ -49,7 +49,7 @@
                 android:layout_height="@dimen/_40sdp"
                 android:layout_gravity="center"
                 android:padding="@dimen/_10sdp"
-                android:src="@drawable/icon" />
+                android:src="@drawable/logo_blue_seperate" />
 
 
         </LinearLayout>

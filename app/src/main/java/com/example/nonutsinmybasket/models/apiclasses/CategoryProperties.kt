@@ -1,3 +1,0 @@
-package com.example.nonutsinmybasket.models.apiclasses
-
-class CategoryProperties

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.nonutsinmybasket">
+    package="com.deezappsinc.nonutsinmybasket">
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.INTERNET"/>
 
@@ -14,13 +14,13 @@
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="ca-app-pub-4945457626615219~7043112116"/>
-        <activity android:name=".productpage.ProductPage"
+        <activity android:name="com.deezappsinc.nonutsinmybasket.productpage.ProductPage"
             android:screenOrientation="portrait"/>
-        <activity android:name=".activity.Registration"
+        <activity android:name="com.deezappsinc.nonutsinmybasket.activity.Registration"
             android:screenOrientation="portrait"/>
-        <activity android:name=".activity.Login"
+        <activity android:name="com.deezappsinc.nonutsinmybasket.activity.Login"
             android:screenOrientation="portrait"/>
-        <activity android:name=".activity.MainActivity"
+        <activity android:name="com.deezappsinc.nonutsinmybasket.activity.MainActivity"
             android:screenOrientation="portrait">
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
@@ -28,7 +28,7 @@
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
         </activity>
-        <activity android:name=".activity.SplashScreen"
+        <activity android:name="com.deezappsinc.nonutsinmybasket.activity.SplashScreen"
             android:screenOrientation="portrait">
 
         </activity>

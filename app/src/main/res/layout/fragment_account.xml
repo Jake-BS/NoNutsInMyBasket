@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg"
+    android:focusableInTouchMode="true"
+    tools:context=".fragments.Account">
+
+    <LinearLayout
+        android:id="@+id/profileFooter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:background="@drawable/bg_rounded_ractangle_10"
+        android:backgroundTint="@color/colorPrimary"
+        android:orientation="vertical"
+        android:padding="@dimen/_10sdp"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <TextView
+            android:id="@+id/btnLogout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:fontFamily="@font/p_bold"
+            android:gravity="center"
+            android:text="Logout"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_12sdp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/btnUpdate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:background="@drawable/bg_rounded_ractangle_10"
+        android:backgroundTint="@color/colorPrimary"
+        android:orientation="vertical"
+        android:padding="@dimen/_10sdp"
+        app:layout_constraintBottom_toTopOf="@id/profileFooter">
+
+        <TextView
+            android:id="@+id/updateInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:fontFamily="@font/p_bold"
+            android:gravity="center"
+            android:text="Update Password"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_12sdp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/bg_rounded_ractangle_10"
+        android:backgroundTint='@color/background'
+        android:orientation="vertical"
+        android:padding="@dimen/_10sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/bg_rounded_ractangle_5_stroke"
+                android:backgroundTint="@color/background"
+                android:orientation="horizontal"
+                android:padding="@dimen/_8sdp"
+                app:passwordToggleEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etUpdatePassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="#00ffffff"
+                    android:fontFamily="@font/p_reguler"
+                    android:hint="New Password"
+                    android:inputType="textPassword"
+                    android:maxLines="1"
+                    android:textColor="@color/text1"
+                    android:textColorHint="@color/text4"
+                    android:textSize="@dimen/_11sdp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:orientation="horizontal">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/bg_rounded_ractangle_5_stroke"
+                android:backgroundTint="@color/background"
+                android:orientation="horizontal"
+                android:padding="@dimen/_10sdp"
+                app:passwordToggleEnabled="true">
+
+                <EditText
+                    android:id="@+id/etConfirmUpdatePassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="#00ffffff"
+                    android:fontFamily="@font/p_reguler"
+                    android:hint="Confirm Password"
+                    android:inputType="textPassword"
+                    android:maxLines="1"
+                    android:textColor="@color/text1"
+                    android:textColorHint="@color/text4"
+                    android:textSize="@dimen/_11sdp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -122,6 +122,7 @@
                     android:textSize="@dimen/_9sdp" />
 
                 <ImageView
+                    android:id="@+id/btnSort"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/_10sdp"
                     android:layout_gravity="center"
