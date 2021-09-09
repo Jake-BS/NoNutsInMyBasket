@@ -131,7 +131,11 @@ class Avoid(var userId: String?) : Fragment() {
         val nonDairyDiet = Diet(nonDairyList, "No Dairy", false)
         val nonEggList = listOf<String>("meringue powder", "egg yolk", "egg white", "dried egg", "Yolk", "Whole egg", "Vitellin", "Surimi", "Simplesse", "Silici albuminate", "Punch Egg", "Powdered eggs", "Ovovitellin", "Ovovitelia", "Ovotransferrin", "Ovomucoid", "Ovomucin", "Ovoglobulin", "Ovalbumin", "Meringue", "Mayonnaise", "Lysozyme", "Livetin", "Lecithin", "Globulin", "Fat substitutes", "Eggnog", "Egg wash", "Egg Solids", "Egg Powder", "Egg", "E-161b", "Dried egg solids", "Cholesterol free egg substitute", "Apovitellin", "Albumin")
         val nonEggDiet = Diet(nonEggList, "No Eggs", false)
-        val diets = listOf<Diet>(veganDiet, veggieDiet, nonSugarDiet, noNutDiet, nonDairyDiet, nonEggDiet)
+        val nonGlutenList = listOf<String>("Wheatberries", "Wheat Starch", "Wheat", "Triticum vulgare", "Triticum spelta", "Triticale", "Spelt", "Semolina", "Seitan", "Secale cereale", "Rye", "Rice", "Pasta", "Oats", "Oatmeal", "Matzo", "Malt", "Lager", "Khorasan", "Kamut", "Hordeum vulgare", "Graham", "Gluten", "Fu", "Farro", "Farina", "Emmer", "Einkorn", "Durum", "Crackers", "Couscous", "Cookies", "Cereals", "Bulgar", "Broth", "Brewers's Yeast", "Breads", "Beer", "Barley", "Atta", "Ale")
+        val nonGlutenDiet = Diet(nonGlutenList, "No Gluten", false)
+        val notDogFriendlyList = listOf<String>("Xylitol", "Sugar", "Raisin", "Onion", "Macadamia", "Grape", "Garlic", "Corn on the Cob", "Cocoa", "Chocolate", "Chive", "Caffeine", "Bone", "Avacado", "Alcohol")
+        val notDogFriendlyDiet = Diet(notDogFriendlyList, "Deadly for Dogs (Select no dairy as well)", false)
+        val diets = listOf<Diet>(veganDiet, veggieDiet, nonGlutenDiet, nonSugarDiet, noNutDiet, nonDairyDiet, notDogFriendlyDiet, nonEggDiet)
         return diets
     }
 

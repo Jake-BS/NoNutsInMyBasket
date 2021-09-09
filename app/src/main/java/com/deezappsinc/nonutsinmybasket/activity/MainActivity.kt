@@ -66,6 +66,10 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    override fun onNightModeChanged(mode: Int) {
+        super.onNightModeChanged(mode)
+    }
+
     private fun setText(email: String?) {
         if (email != null) {
             currentEmail = email

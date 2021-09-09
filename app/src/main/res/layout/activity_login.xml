@@ -44,7 +44,8 @@
                 android:layout_marginRight="@dimen/_10sdp"
                 android:background="@drawable/bg_rounded_ractangle_10"
                 android:orientation="vertical"
-                android:padding="@dimen/_10sdp">
+                android:padding="@dimen/_10sdp"
+                android:backgroundTint='@color/background'>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -87,12 +88,12 @@
                         android:id="@+id/etLoginEmail"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="#00ffffff"
+                        android:background="@color/background"
                         android:fontFamily="@font/p_reguler"
                         android:hint="Email"
                         android:textColor="@color/text1"
                         android:textColorHint="@color/text4"
-                        android:textSize="@dimen/_8ssp" />
+                        android:textSize="@dimen/_11ssp" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -123,7 +124,7 @@
                             android:inputType="textPassword"
                             android:textColor="@color/text1"
                             android:textColorHint="@color/text4"
-                            android:textSize="@dimen/_8ssp" />
+                            android:textSize="@dimen/_11ssp" />
 
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -227,9 +228,9 @@
                 android:layout_marginTop="@dimen/_10sdp"
                 android:layout_marginRight="@dimen/_10sdp"
                 android:background="@drawable/bg_rounded_ractangle_10"
-                android:backgroundTint="#ffffff"
                 android:orientation="vertical"
-                android:padding="@dimen/_10sdp">
+                android:padding="@dimen/_10sdp"
+                android:backgroundTint='@color/background'>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -266,7 +267,7 @@
                     android:justificationMode="inter_word"
                     android:letterSpacing="0.03"
                     android:lineHeight="@dimen/_15sdp"
-                    android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam a est massa. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Morbi sed lacus sit amet sapien posuere euismod."
+                    android:text="The avoid app is here to help you dodge all the ingredients you don't want in your food!"
                     android:textColor="@color/text3"
                     android:textSize="@dimen/_10ssp" />
 
@@ -372,9 +373,10 @@
                 android:layout_marginRight="@dimen/_10sdp"
                 android:layout_marginBottom="@dimen/_10sdp"
                 android:background="@drawable/bg_rounded_ractangle_10"
-                android:backgroundTint="#ffffff"
+                android:backgroundTint='@color/background'
                 android:orientation="vertical"
-                android:padding="@dimen/_5sdp">
+                android:padding="@dimen/_5sdp"
+                >
 
                 <TextView
                     android:layout_width="match_parent"

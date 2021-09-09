@@ -19,7 +19,6 @@ import com.budiyev.android.codescanner.CodeScanner
 import com.budiyev.android.codescanner.DecodeCallback
 import com.budiyev.android.codescanner.ErrorCallback
 import com.budiyev.android.codescanner.ScanMode
-import kotlinx.android.synthetic.main.fragment_scan.*
 import kotlinx.android.synthetic.main.fragment_scan.view.*
 
 class Scan(var userId: String?) : Fragment() {
@@ -37,10 +36,13 @@ class Scan(var userId: String?) : Fragment() {
     ): View? {
         super.onCreateView(inflater, container, savedInstanceState)
         binding = FragmentScanBinding.inflate(layoutInflater)
-        val view: View = binding!!.root
+        return binding!!.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         setupPermissions()
         codeScanner(view)
-        return view
     }
 
     private fun codeScanner(view: View) {
@@ -67,6 +69,7 @@ class Scan(var userId: String?) : Fragment() {
                     val intent = Intent(context, ProductPage::class.java)
                     intent.putExtra("Barcode", view.scanPrompt.text.toString())
                     if (userId != null) intent.putExtra("user_id", userId)
+                    codeScanner.releaseResources()
                     startActivity(intent)
                 }
             }
@@ -82,12 +85,12 @@ class Scan(var userId: String?) : Fragment() {
     }
 
     override fun onResume() {
-        super.onResume()
         codeScanner.startPreview()
+        super.onResume()
     }
 
     override fun onPause() {
-        codeScanner.releaseResources()
+        //codeScanner.releaseResources()
         super.onPause()
     }
 
