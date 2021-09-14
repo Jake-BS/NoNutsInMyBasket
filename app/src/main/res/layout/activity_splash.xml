@@ -20,7 +20,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="100dp"
             android:adjustViewBounds="true"
-            android:src="@drawable/logo" />
+            android:src="@drawable/logo_3_no_bg" />
 
         <com.github.silvestrpredko.dotprogressbar.DotProgressBar
             android:id="@+id/dot_progress_bar"
@@ -45,7 +45,7 @@
             android:gravity="center"
             android:text="-"
             android:textColor="#222222"
-            android:textSize="13dp" />
+            android:textSize="13sp" />
     </RelativeLayout>
 
 </LinearLayout>

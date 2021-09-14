@@ -33,7 +33,7 @@
                     android:layout_marginRight="@dimen/_5sdp"
                     android:adjustViewBounds="true"
                     android:alpha="1"
-                    android:src="@drawable/logo_blue_seperate" />
+                    android:src="@drawable/logo_3_no_bg" />
             </LinearLayout>
 
             <LinearLayout
@@ -51,13 +51,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_10sdp"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    tools:ignore="UseCompoundDrawables">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_marginLeft="@dimen/_3sdp"
+                        android:layout_marginStart="@dimen/_3sdp"
                         android:fontFamily="@font/p_semibold"
                         android:text="Login"
                         android:textColor="@color/text2"
@@ -67,7 +68,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/_10sdp"
                         android:layout_gravity="center"
-                        android:layout_marginLeft="@dimen/_7sdp"
+                        android:layout_marginStart="@dimen/_7sdp"
                         android:layout_marginBottom="@dimen/_1sdp"
                         android:adjustViewBounds="true"
                         android:src="@drawable/ic_right_arrow"
@@ -106,7 +107,7 @@
                     android:orientation="horizontal">
 
                     <com.google.android.material.textfield.TextInputLayout
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:orientation="horizontal"
@@ -117,7 +118,6 @@
                             android:id="@+id/etLoginPassword"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
                             android:background="#00ffffff"
                             android:fontFamily="@font/p_reguler"
                             android:hint="Password"
@@ -133,11 +133,6 @@
                         android:layout_height="match_parent"
                         android:background="#E4E4E4" />
 
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal" />
-
                 </LinearLayout>
 
                 <LinearLayout
@@ -145,7 +140,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_15sdp"
-                    android:gravity="right"
+                    android:gravity="end"
                     android:orientation="horizontal"
                     android:visibility="gone">
 
@@ -173,7 +168,7 @@
                     <TextView
                         android:id="@+id/btnSignIn"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="0dp"
                         android:layout_gravity="center"
                         android:layout_weight="1"
                         android:fontFamily="@font/p_bold"
@@ -189,7 +184,6 @@
                     android:id="@+id/sign"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/submit"
                     android:layout_centerHorizontal="true"
                     android:layout_gravity="center"
                     android:layout_marginTop="@dimen/_20sdp"
@@ -251,7 +245,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/_10sdp"
                         android:layout_gravity="center"
-                        android:layout_marginLeft="@dimen/_7sdp"
+                        android:layout_marginStart="@dimen/_7sdp"
                         android:layout_marginBottom="@dimen/_1sdp"
                         android:adjustViewBounds="true"
                         android:src="@drawable/ic_right_arrow"
@@ -295,10 +289,10 @@
                             app:tint="@color/text4" />
 
                         <TextView
-                            android:layout_width="match_parent"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:layout_marginLeft="@dimen/_5sdp"
+                            android:layout_marginStart="@dimen/_5sdp"
                             android:layout_weight="1"
                             android:fontFamily="@font/p_reguler"
                             android:justificationMode="inter_word"
@@ -337,10 +331,10 @@
                             app:tint="@color/text4" />
 
                         <TextView
-                            android:layout_width="match_parent"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:layout_marginLeft="@dimen/_5sdp"
+                            android:layout_marginStart="@dimen/_5sdp"
                             android:layout_weight="1"
                             android:fontFamily="@font/p_reguler"
                             android:justificationMode="inter_word"
@@ -362,33 +356,6 @@
 
                     </LinearLayout>
                 </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/_10sdp"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:layout_marginRight="@dimen/_10sdp"
-                android:layout_marginBottom="@dimen/_10sdp"
-                android:background="@drawable/bg_rounded_ractangle_10"
-                android:backgroundTint='@color/background'
-                android:orientation="vertical"
-                android:padding="@dimen/_5sdp"
-                >
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/p_reguler"
-                    android:gravity="center"
-                    android:justificationMode="inter_word"
-                    android:letterSpacing="0.03"
-                    android:lineHeight="@dimen/_15sdp"
-                    android:text="Copyright NoNuts 2021, All right reserved."
-                    android:textColor="@color/text3"
-                    android:textSize="@dimen/_8ssp" />
 
             </LinearLayout>
 

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -18,26 +17,18 @@
         android:orientation="vertical"
         android:backgroundTint='@color/background'>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="1">
-
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginLeft="@dimen/_5sdp"
+                android:layout_marginStart="@dimen/_5sdp"
                 android:layout_weight="1"
                 android:fontFamily="@font/p_semibold"
                 android:text="About Page/TOS"
                 android:textColor="@color/text1"
-                android:textSize="@dimen/_12sdp" />
-
-
+                android:textSize="@dimen/_12sdp"
+                android:gravity="center"/>
         </LinearLayout>
-    </LinearLayout>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -46,7 +37,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <ImageView
@@ -58,7 +49,7 @@
                 android:adjustViewBounds="true"
                 android:background="@drawable/bg_rounded_ractangle_10"
                 android:padding="@dimen/_5sdp"
-                android:src="@drawable/logo_blue_seperate" />
+                android:src="@drawable/logo_3_no_bg" />
 
             <LinearLayout
                 android:layout_width="match_parent"
