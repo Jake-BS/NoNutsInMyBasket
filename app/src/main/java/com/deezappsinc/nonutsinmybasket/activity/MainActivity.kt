@@ -66,14 +66,10 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    override fun onNightModeChanged(mode: Int) {
-        super.onNightModeChanged(mode)
-    }
 
     private fun setText(email: String?) {
         if (email != null) {
             currentEmail = email
-            //tvGreeting.text = "Welcome $currentEmail!"
         }
     }
 
@@ -82,8 +78,8 @@ class MainActivity : AppCompatActivity() {
         val adapter = BottomNavViewPagerAdapter(supportFragmentManager)
         adapter.addFrag(Avoid(userId), "")
         adapter.addFrag(Scan(userId), "")
-        adapter.addFrag(Account(userId, sharedPrefs), "")
-        adapter.addFrag(About(), "")
+        adapter.addFrag(Account(sharedPrefs), "")
+        //adapter.addFrag(About(), "")
         binding?.viewPager?.adapter = adapter
 
         //page swipe and click handling
@@ -97,7 +93,7 @@ class MainActivity : AppCompatActivity() {
         })
 
         //page swipe and click handling
-        binding?.bubbleNavigationLinearView?.setNavigationChangeListener { view, position ->
+        binding?.bubbleNavigationLinearView?.setNavigationChangeListener { _, position ->
             binding?.viewPager?.setCurrentItem(
                 position,
                 true

@@ -90,7 +90,7 @@ class Scan(var userId: String?) : Fragment() {
     }
 
     override fun onPause() {
-        //codeScanner.releaseResources()
+        codeScanner.releaseResources()
         super.onPause()
     }
 

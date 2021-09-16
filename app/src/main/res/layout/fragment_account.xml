@@ -46,10 +46,11 @@
         android:layout_marginEnd="@dimen/_10sdp"
         android:layout_marginBottom="@dimen/_10sdp"
         android:background="@drawable/bg_rounded_ractangle_10"
-        android:backgroundTint="@color/colorPrimary"
+        android:backgroundTint="@color/colorAccent"
         android:orientation="vertical"
         android:padding="@dimen/_10sdp"
-        app:layout_constraintBottom_toTopOf="@id/profileFooter">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        tools:layout_editor_absoluteX="13dp">
 
         <TextView
             android:id="@+id/updateInfo"
@@ -65,6 +66,34 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/btnTOS"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="13dp"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:background="@drawable/bg_rounded_ractangle_10"
+        android:backgroundTint="@color/colorPrimary"
+        android:orientation="vertical"
+        android:padding="@dimen/_10sdp"
+        app:layout_constraintBottom_toTopOf="@+id/profileFooter">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:fontFamily="@font/p_bold"
+            android:gravity="center"
+            android:text="Open App Policies"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_12sdp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -97,14 +126,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:background="@color/background"
                     android:fontFamily="@font/p_reguler"
                     android:hint="New Password"
                     android:inputType="textPassword"
                     android:maxLines="1"
                     android:textColor="@color/text1"
                     android:textColorHint="@color/text4"
-                    android:textSize="@dimen/_11sdp"
-                    android:background="@color/background"/>
+                    android:textSize="@dimen/_11sdp" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -114,6 +143,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_10sdp"
+            android:baselineAligned="false"
             android:orientation="horizontal">
 
             <com.google.android.material.textfield.TextInputLayout
@@ -125,7 +155,7 @@
                 android:padding="@dimen/_10sdp"
                 app:passwordToggleEnabled="true">
 
-                <EditText
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etConfirmUpdatePassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -142,8 +172,26 @@
             </com.google.android.material.textfield.TextInputLayout>
 
         </LinearLayout>
+    </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="14dp"
+        android:layout_marginEnd="14dp"
+        android:layout_marginBottom="5dp"
+        android:baselineAligned="false"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/btnTOS"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/_10sdp"
+            android:gravity="center"
+            android:text="To view our Acceptable Use Policy, End User License, Privacy Policy, or Terms and Conditions please press the button bellow."></TextView>
     </LinearLayout>
 
 

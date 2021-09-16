@@ -79,7 +79,7 @@ class Avoid(var userId: String?) : Fragment() {
                     var btnAddIngredient = view.btnAdd
                     var etEnterIngredient = view.etEnterIngredient
                     etEnterIngredient.setOnKeyListener{ _, keyCode, event ->
-                        if (keyCode == KeyEvent.KEYCODE_ENTER && event.action == KeyEvent.ACTION_UP) {
+                        if (keyCode == KeyEvent.KEYCODE_ENTER && event.action == KeyEvent.ACTION_DOWN) {
                             addToAvoidList(etEnterIngredient)
                             true
                         }

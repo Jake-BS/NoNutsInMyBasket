@@ -1,6 +1,8 @@
 package com.deezappsinc.nonutsinmybasket.activity
 
 import android.content.Intent
+import android.graphics.Color
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
@@ -11,7 +13,10 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore
+import io.perfmark.Link
 import kotlinx.android.synthetic.main.activity_registration.*
+import com.klinker.android.link_builder.*
+import kotlinx.android.synthetic.main.fragment_about.*
 
 class Registration : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
@@ -29,7 +34,23 @@ class Registration : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
         db = FirebaseFirestore.getInstance()
+        setupLink()
     }
+
+    private fun setupLink() {
+        val policiesLinkVar= Link("here")
+            .setTextColor(Color.BLUE)
+            .setTextColorOfHighlightedLink(Color.CYAN)
+            .setHighlightAlpha(.4f)
+            .setUnderlined(true)
+            .setBold(false)
+        policiesLinkVar.setOnClickListener {
+            var uri = Uri.parse("https://sites.google.com/view/avoidapppolicies/home")
+            startActivity(Intent(Intent.ACTION_VIEW, uri))
+        }
+        policiesLink.applyLinks(policiesLinkVar)
+    }
+
     private fun registerButtonClickListener() {
         btnRegister.setOnClickListener{
             when {
@@ -52,6 +73,13 @@ class Registration : AppCompatActivity() {
                     Toast.makeText(
                         this@Registration,
                         "Please confirm your password",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+                !agree.isChecked -> {
+                    Toast.makeText(
+                        this@Registration,
+                        "You must agree to the linked policies to register",
                         Toast.LENGTH_SHORT
                     ).show()
                 }

@@ -2,6 +2,7 @@ package com.deezappsinc.nonutsinmybasket.fragments
 
 import android.content.Intent
 import android.content.SharedPreferences
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.os.Bundle
@@ -15,7 +16,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_account.*
 
-class Account(var userId: String?, var sharedPrefs: SharedPreferences) : Fragment() {
+class Account(var sharedPrefs: SharedPreferences) : Fragment() {
     var binding: FragmentAccountBinding? = null
     private lateinit var db: FirebaseFirestore
     override fun onCreateView(
@@ -33,6 +34,14 @@ class Account(var userId: String?, var sharedPrefs: SharedPreferences) : Fragmen
         setupLogoutButton(sharedPrefs)
         db = FirebaseFirestore.getInstance()
         setupUpdateButton()
+        setupPoliciesButton()
+    }
+
+    private fun setupPoliciesButton() {
+        btnTOS.setOnClickListener {
+            var uri = Uri.parse("https://sites.google.com/view/avoidapppolicies/home")
+            startActivity(Intent(Intent.ACTION_VIEW, uri))
+        }
     }
 
     private fun setupLogoutButton(sharedPrefs: SharedPreferences) {

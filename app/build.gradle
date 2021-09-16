@@ -103,6 +103,9 @@ dependencies {
     //ads
     implementation 'com.google.android.gms:play-services-ads:19.3.0'
 
+    //LINKS?????
+    implementation 'com.klinkerapps:link_builder:2.0.5'
+
 }
 repositories {
     mavenCentral()
