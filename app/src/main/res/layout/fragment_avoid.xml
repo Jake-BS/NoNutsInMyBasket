@@ -122,6 +122,7 @@
                     android:textSize="@dimen/_9sdp" />
 
                 <ImageView
+                    android:id="@+id/btnSort"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/_10sdp"
                     android:layout_gravity="center"
@@ -187,7 +188,7 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvDietsList"
                 android:layout_width="match_parent"
-                android:layout_height="262dp"
+                android:layout_height="350dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="16dp"
                 android:adjustViewBounds="true"

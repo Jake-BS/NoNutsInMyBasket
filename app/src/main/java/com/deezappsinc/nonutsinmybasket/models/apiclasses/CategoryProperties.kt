@@ -1,0 +1,3 @@
+package com.deezappsinc.nonutsinmybasket.models.apiclasses
+
+class CategoryProperties

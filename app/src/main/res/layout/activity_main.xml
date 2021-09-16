@@ -14,7 +14,8 @@
         android:background="@color/background"
         android:elevation="@dimen/_2sdp"
         android:orientation="horizontal"
-        android:padding="@dimen/_5sdp">
+        android:padding="@dimen/_5sdp"
+        android:baselineAligned="false">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -29,7 +30,7 @@
                 android:adjustViewBounds="true"
                 android:alpha="1"
                 android:padding="@dimen/_6sdp"
-                android:src="@drawable/logo_blue_seperate" />
+                android:src="@drawable/logo_3_no_bg" />
 
             <com.google.android.gms.ads.AdView
                 xmlns:ads="http://schemas.android.com/apk/res-auto"
@@ -37,7 +38,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 ads:adSize="BANNER"
-                ads:adUnitId="ca-app-pub-3940256099942544/6300978111"></com.google.android.gms.ads.AdView>
+                ads:adUnitId="ca-app-pub-3940256099942544/6300978111"
+                android:visibility="invisible"
+                android:clickable="false"></com.google.android.gms.ads.AdView>
 
         </LinearLayout>
 
@@ -48,7 +51,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_margin="@dimen/_10sdp"
+        android:layout_marginStart="@dimen/_25sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_25sdp"
+        android:layout_marginBottom="@dimen/_10sdp"
         android:background="@drawable/bg_rounded_ractangle_10"
         android:backgroundTint="@color/background"
         android:paddingLeft="@dimen/_10sdp"
@@ -108,7 +114,7 @@
             app:bt_titleSize="@dimen/_12ssp"
             app:theme="@style/BottomNavigationViewTextStyle" />
 
-        <com.gauravk.bubblenavigation.BubbleToggleView
+        <!--<com.gauravk.bubblenavigation.BubbleToggleView
             android:id="@+id/four"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -123,7 +129,7 @@
             app:bt_title=" About"
             app:bt_titlePadding="@dimen/_5sdp"
             app:bt_titleSize="@dimen/_12ssp"
-            app:theme="@style/BottomNavigationViewTextStyle" />
+            app:theme="@style/BottomNavigationViewTextStyle" />-->
 
         <!-- Add more child items here - max upto 5 -->
 

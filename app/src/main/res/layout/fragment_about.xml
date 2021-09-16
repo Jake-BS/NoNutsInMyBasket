@@ -48,17 +48,6 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <ImageView
-                android:id="@+id/aboutImage"
-                android:layout_width="@dimen/_150sdp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:adjustViewBounds="true"
-                android:background="@drawable/bg_rounded_ractangle_10"
-                android:padding="@dimen/_5sdp"
-                android:src="@drawable/logo_blue_seperate" />
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -137,7 +126,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:fontFamily="@font/p_semibold"
-                    android:text="Privacy Policy"
+                    android:text="Privacy Notice"
                     android:textColor="@color/text1"
                     android:textSize="@dimen/_11sdp" />
 

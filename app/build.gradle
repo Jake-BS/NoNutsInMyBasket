@@ -10,7 +10,7 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        applicationId "com.example.nonutsinmybasket"
+        applicationId "com.deezappsinc.nonutsinmybasket"
         minSdkVersion 23
         targetSdkVersion 30
         versionCode 1
@@ -102,6 +102,9 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     //ads
     implementation 'com.google.android.gms:play-services-ads:19.3.0'
+
+    //LINKS?????
+    implementation 'com.klinkerapps:link_builder:2.0.5'
 
 }
 repositories {
