@@ -297,7 +297,7 @@
                             android:fontFamily="@font/p_reguler"
                             android:justificationMode="inter_word"
                             android:letterSpacing="0.03"
-                            android:text="deezappsinc@gmail.com"
+                            android:text="contactavoidapp@gmail.com"
                             android:textColor="@color/text3"
                             android:textSize="@dimen/_10ssp" />
 

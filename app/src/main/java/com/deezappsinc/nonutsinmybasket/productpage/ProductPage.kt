@@ -62,7 +62,7 @@ class ProductPage : AppCompatActivity() {
         viewModel.myResponseDynamic.observe(this, Observer { response ->
             if (response.isSuccessful) {
                 //val productName = response.body()?.product?.product_name?.lowercase()
-                val productIngredients = response.body()?.product?.ingredients_text?.lowercase()
+                val productIngredients = response.body()?.product?.ingredients_text_en?.lowercase()
                 if (productIngredients != null) {
                     detectAndDisplayBannedIngredients(productIngredients, ingredientsText)
                 } else avoidText.text = "Could not load ingredients for this item :/"
