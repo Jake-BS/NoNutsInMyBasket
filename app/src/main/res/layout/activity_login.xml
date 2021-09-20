@@ -261,7 +261,7 @@
                     android:justificationMode="inter_word"
                     android:letterSpacing="0.03"
                     android:lineHeight="@dimen/_15sdp"
-                    android:text="The avoid app is here to help you dodge all the ingredients you don't want in your food!"
+                    android:text="The avoid app is here to help you dodge all the ingredients you don't want in your food! \n\nIngredient data is provided by the Open Food Facts API and is for educational purposes, but not a substitute for professional medical, healthcare or dietary advice. "
                     android:textColor="@color/text3"
                     android:textSize="@dimen/_10ssp" />
 
