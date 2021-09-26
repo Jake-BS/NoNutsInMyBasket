@@ -38,17 +38,47 @@ class Registration : AppCompatActivity() {
     }
 
     private fun setupLink() {
-        val policiesLinkVar= Link("here")
+        val termsAndConditions= Link("Terms and Conditions")
             .setTextColor(Color.BLUE)
             .setTextColorOfHighlightedLink(Color.CYAN)
             .setHighlightAlpha(.4f)
             .setUnderlined(true)
             .setBold(false)
-        policiesLinkVar.setOnClickListener {
-            var uri = Uri.parse("https://sites.google.com/view/avoidapppolicies/home")
+        termsAndConditions.setOnClickListener {
+            var uri = Uri.parse("https://sites.google.com/view/avoidtermsandconditions/home")
             startActivity(Intent(Intent.ACTION_VIEW, uri))
         }
-        policiesLink.applyLinks(policiesLinkVar)
+        val privacyNotice= Link("Privacy Notice")
+            .setTextColor(Color.BLUE)
+            .setTextColorOfHighlightedLink(Color.CYAN)
+            .setHighlightAlpha(.4f)
+            .setUnderlined(true)
+            .setBold(false)
+        privacyNotice.setOnClickListener {
+            var uri = Uri.parse("https://sites.google.com/view/avoid-privacy-notice/home")
+            startActivity(Intent(Intent.ACTION_VIEW, uri))
+        }
+        val endUserLicense= Link("End User License")
+            .setTextColor(Color.BLUE)
+            .setTextColorOfHighlightedLink(Color.CYAN)
+            .setHighlightAlpha(.4f)
+            .setUnderlined(true)
+            .setBold(false)
+        endUserLicense.setOnClickListener {
+            var uri = Uri.parse("https://sites.google.com/view/avoid-end-user-license/home")
+            startActivity(Intent(Intent.ACTION_VIEW, uri))
+        }
+        val acceptableUSe = Link("Acceptable Use Policy")
+        .setTextColor(Color.BLUE)
+            .setTextColorOfHighlightedLink(Color.CYAN)
+            .setHighlightAlpha(.4f)
+            .setUnderlined(true)
+            .setBold(false)
+        acceptableUSe.setOnClickListener {
+            var uri = Uri.parse("https://sites.google.com/view/avoid-acceptable-use-policy/home")
+            startActivity(Intent(Intent.ACTION_VIEW, uri))
+        }
+        policiesLink.applyLinks(termsAndConditions, privacyNotice, endUserLicense, acceptableUSe)
     }
 
     private fun registerButtonClickListener() {

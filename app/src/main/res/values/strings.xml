@@ -29,5 +29,5 @@ By continuing to use the app after these changes you are showing your acceptance
         Personal data we collect includes your email address, and associated with that email address are the individual ingredients and diet presets you have selected while using the app.
     </string>
     <string name="about_us">The Avoid app was developed in order to help those with dietary requirements speed up shopping. Especially for diets like veganism, that have hundreds of ingredients to remember to avoid!</string>
-    <string name="i_agree_to_the_terms_and_conditions_and_privacy_notice_provided_here">I agree to the Terms and Conditions, Privacy Notice, End User License, and Acceptable Use Policy provided here</string>
+    <string name="i_agree_to_the_terms_and_conditions_and_privacy_notice_provided_here">I have read and agree to the Terms and Conditions, Privacy Notice, End User License, and Acceptable Use Policy</string>
 </resources>
